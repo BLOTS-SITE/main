@@ -96,6 +96,9 @@ h6,
 .fixed-top {
     transition: .5s;
 }
+.container-fluid.fixed-top.px-0.wow.fadeIn.bg-white.shadow {
+    top: 0px;
+}
 
 .top-bar {
     height: 45px;
