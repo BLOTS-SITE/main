@@ -95,10 +95,6 @@ h6,
 /*** Navbar ***/
 .fixed-top {
     transition: .5s;
-    top: 0px;
-}
-.container-fluid.fixed-top.px-0.wow.fadeIn.bg-white.shadow {
-    top: 0px;
 }
 
 .top-bar {
