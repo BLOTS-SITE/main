@@ -539,10 +539,3 @@ h6,
 .copyright a:hover {
     color: var(--primary);
 }
-.will-pdf{
-    display: flex;
-    width: 500px;
-    height: 500px;
-    text-align: center;
-    align-items: center;
-}
