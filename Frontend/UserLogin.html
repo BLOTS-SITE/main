@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <form action="https://blots-site.github.io/main/Frontend/Home.html">
+    <form name="Logform" enctype="multipart/form-data" method="post">
         <div class="container-fluid callback my-5 pt-5">
             <div class="container pt-5">
                 <div class="row justify-content-center">
@@ -47,19 +47,19 @@
 
                             </div>
                             <div class="form-outline mb-4">
-                                <input type="email" id="loginName" placeholder="Email or username" class="form-control"
+                                <input type="email" id="loginmail" placeholder="Enter your Registered email address" class="form-control"
                                     required />
 
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="loginPassword" placeholder="Password" class="form-control"
+                                <input type="password" id="loginPassword" placeholder="Enter your Password" class="form-control"
                                     required />
 
                             </div>
                             <div class="col-12 text-center">
-                                <button class="btn btn-primary w-100 py-3" type="submit" onclick="Login()">Submit Now</button>
+                                <input class="btn btn-primary w-100 py-3" type="submit" id="logbutton" value="Login"/>
                             </div>
                             <div class="col-12 text-center">
                                 <br><br>
@@ -76,9 +76,35 @@
         </div>
         </div>
     </form>
-    <script type="application/javascript">
-
+    <div id="output"></div>
+    <script>
+         const form = document.forms.namedItem("Logform");
+            form.addEventListener(
+            "submit",
+            (event) => {
+                
+                const request = new XMLHttpRequest();
+                request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/login", true);
+                request.setRequestHeader("content-type","application/json");
+                request.onreadystatechange = () => {
+                     if (request.readyState == 4 && request.status === 200) {
+                        alert("Success");
+                        //window.location.replace('https://blots-site.github.io/main/Frontend/Home.html');
+                        const data = JSON.parse(request.response);
+                        const cres = request.getResponseHeader("set-cookie");
+                        console.log("Cookie: "+cres);
+                  }
+               };
+                const email = document.getElementById("loginmail").value;
+                const password = document.getElementById("loginPassword").value;
+                request.send(JSON.stringify({Username:email,Password:password}));
+                
+                event.preventDefault();
+            },
+            false
+            );
     </script>
+    
 </body>
 
 </html>

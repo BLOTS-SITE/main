@@ -29,13 +29,15 @@
 
     <!-- Template Stylesheet -->
     <link href="https://blots-site.github.io/main/css/style.css" rel="stylesheet">
-
+    <!-- JQuery Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+    <script src="https://malsup.github.io/jquery.form.js"></script> 
 </head>
 
 <body>
     <div class="container-fluid callback my-5 pt-5" id="contact-wrapper">
         <!-- Sample HTML Form -->
-        <form id="Regform" enctype="multipart/form-data" action="https://pristine-dahlia-377509.ey.r.appspot.com/sign-up" method="post">
+        <form name="Regform" enctype="multipart/form-data" method="post">
             <div class="container pt-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
@@ -119,7 +121,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Register</button>
+                                    <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Register" />
                                 </div>
                                 <div class="col-12 text-center">
                                     <br><br>
@@ -131,6 +133,8 @@
                 </div>
             </div>
          </form>
+         <div id="output"></div>
+         <!-- JavaScript Functions -->
          <script>
             let imageUpload = document.getElementById("file");
             let uploadMsg = document.getElementById("idproof");
@@ -147,6 +151,36 @@
             uploadMsg.innerHTML = text;
             };
          </script>
+         <script>
+            const form = document.forms.namedItem("Regform");
+            form.addEventListener(
+            "submit",
+            (event) => {
+               const output = document.querySelector("#output");
+               const formData = new FormData(form);
+               const request = new XMLHttpRequest();
+               request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/sign-up", true);
+               request.onreadystatechange = () => {
+                  console.log("0");
+                     console.log(request.response);
+                     console.log(request.responseText);
+                     console.log("1");
+                     if (request.status === 200) {
+                        console.log("2");
+                        console.log(request.response);
+                        console.log(request.responseText);
+                     
+                  }
+               };
+
+               request.send(formData);
+               
+               event.preventDefault();
+            },
+            false
+            );
+         </script>
+         
     </div>
     
 </body>
