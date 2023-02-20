@@ -90,7 +90,6 @@
                 request.onreadystatechange = () => {
                      if (request.readyState == 4 && request.status === 200) {
                         const data = JSON.parse(request.response);
-                        var xhr = new XMLHttpRequest();
                         console.log(document.cookie);
                         //window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
                         // if(document.cookie==true){
