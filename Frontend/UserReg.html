@@ -133,7 +133,7 @@
                 </div>
             </div>
          </form>
-         <div id="output"></div>
+         
          <!-- JavaScript Functions -->
          <script>
             let imageUpload = document.getElementById("file");
@@ -156,7 +156,7 @@
             form.addEventListener(
             "submit",
             (event) => {
-               const output = document.querySelector("#output");
+               
                const formData = new FormData(form);
                const request = new XMLHttpRequest();
                request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/sign-up", true);
@@ -166,10 +166,12 @@
                      console.log(request.responseText);
                      console.log("1");
                      if (request.status === 200) {
-                        console.log("2");
-                        console.log(request.response);
-                        console.log(request.responseText);
+                        alert("User Registration started! Check your email and confirm your Email Address")
                      
+                  } else if (request.status === 400){
+                     alert("Something Went Wrong! Invalid Input Data!")
+                  } else {
+                     alert("Server Internal Error! Not able to sign you up. Please come back later!")
                   }
                };
 

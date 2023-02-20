@@ -102,13 +102,13 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    <label for="subject">Your Will ID</label>
+                                    <input type="text" class="form-control" id="willid" placeholder="Will ID" required>
+                                    <label for="willid">Your Will ID</label>
                                 </div>
                             </div>
                             
                             <div class="col-12">
-                                <button class="btn btn-primary py-3 px-5" type="submit">View</button>
+                                <input class="btn btn-primary py-3 px-5" id="getwill" type="submit" value="View"/>
                             </div>
                         </div>
                     </form>
@@ -190,6 +190,24 @@
 
     <!-- Template Javascript -->
     <script src="https://blots-site.github.io/main/js/main.js"></script>
+    <script>
+        const viewwill = document.getElementById("getwill");
+        viewwill.addEventListener("click", (event)=>{
+            const request = new XMLHttpRequest();
+            const hashnum = document.getElementById("willid");
+            request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com//getTestament", true);
+            request.onreadystatechange = () => {
+                console.log(request.response);
+                alert(request.response);
+                if (request.status === 200) {
+                    console.log("Request Successful")
+                     
+                  }
+            };
+            request.send(JSON.stringify({hashNumber:hashnum}));
+            event.preventDefault();
+        });
+    </script>
 </body>
 
 </html>
