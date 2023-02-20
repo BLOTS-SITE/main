@@ -90,8 +90,10 @@
                 request.onreadystatechange = () => {
                      if (request.readyState == 4 && request.status === 200) {
                         const data = JSON.parse(request.response);
-                        console.log(data[0].FirstName);
-                        //window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
+                        var curCookie = "Name=" + data[0].FirstName;
+                        document.cookie = curCookie;
+                        console.log("Your Cookie : " + document.cookie);
+                        window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
                         
                   }
                };
