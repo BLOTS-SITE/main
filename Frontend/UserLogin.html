@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <form name="Logform" enctype="multipart/form-data" method="post">
+    <form name="Logform" method="post">
         <div class="container-fluid callback my-5 pt-5">
             <div class="container pt-5">
                 <div class="row justify-content-center">
@@ -85,14 +85,23 @@
                 
                 const request = new XMLHttpRequest();
                 request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/login", true);
+                //request.withCredentials=true;
                 request.setRequestHeader("content-type","application/json");
                 request.onreadystatechange = () => {
                      if (request.readyState == 4 && request.status === 200) {
                         alert("Success");
                         //window.location.replace('https://blots-site.github.io/main/Frontend/Home.html');
                         const data = JSON.parse(request.response);
-                        const cres = request.getResponseHeader("set-cookie");
-                        console.log("Cookie: "+cres);
+                        var xhr = new XMLHttpRequest();
+                        document.cookie = "session=.eJw1zkFOAzEMAMC_51wqx3Yauyd-Utm006ygKtptT4i_g8S8YL7Lde55rHJ57q98K9dt1EvpFty6dE3y1CFZgyu4Ap1FmBLcCCtF7yw-cwZNDAc1qoONcQK1iTRHPQNBb2bTZYgyJPtQUgPW5DFFnVECqw1GiHRsSrP8RV5H7v-b230c6zS2r2NtH8uqanu 3W37PMXjXn5-AT800K8.Y K_cg. -goM2-AMAyp5DhSxsr6KJmYm-AI; max-age="+365;
+                        console.log(document.cookie)
+                        // console.log(request.getAllResponseHeaders());
+                        // if (request.getAllResponseHeaders().indexOf("set-cookie") >= 0) {
+                        //     console.log("header:", request.getResponseHeader("set-cookie"));
+                        // }
+                        // console.log("Other execution.");                                             
+                        // const cres = request.getResponseHeader("set-cookie");
+                        // console.log("Cookie: "+cres);
                   }
                };
                 const email = document.getElementById("loginmail").value;
