@@ -91,7 +91,9 @@
                      if (request.readyState == 4 && request.status === 200) {
                         const data = JSON.parse(request.response);
                         var xhr = new XMLHttpRequest();
-                        if(document.cookie){
+                        // console.log(document.cookie);
+                        // window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
+                        if(document.cookie==true){
                             console.log("Cookie Found")
                             window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
                         }
