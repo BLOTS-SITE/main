@@ -15,8 +15,7 @@ loginform.addEventListener(
       if (request.readyState == 4 && request.status === 200) {
         const data = JSON.parse(request.response);
         username= data[0].FirstName;
-        console.log(username);
-        //window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
+        window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
       }
     };
     const email = document.getElementById("loginmail").value;
@@ -27,3 +26,4 @@ loginform.addEventListener(
   },
   false
 );
+document.getElementById("userinfo").innerHTML = "Hello "+username+"! Welcome to BloTS"
