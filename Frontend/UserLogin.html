@@ -77,36 +77,33 @@
         </div>
     </form>
     <div id="output"></div>
-    <script>
-         const form = document.forms.namedItem("Logform");
-            form.addEventListener(
-            "submit",
-            (event) => {
+    <script type="text/javascript" src="https://blots-site.github.io/main/js/main2.js"></script>
+            // const loginform = document.forms.namedItem("Logform");
+            // loginform.addEventListener(
+            // "submit",
+            // (event) => {
                 
-                const request = new XMLHttpRequest();
-                request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/login", true);
-                //request.withCredentials=true;
-                request.setRequestHeader("content-type","application/json");
-                request.onreadystatechange = () => {
-                     if (request.readyState == 4 && request.status === 200) {
-                        const data = JSON.parse(request.response);
-                        console.log(document.cookie);
-                        //window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
-                        // if(document.cookie==true){
-                        //     console.log("Cookie Found")
-                        //     window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
-                        // }
-                  }
-               };
-                const email = document.getElementById("loginmail").value;
-                const password = document.getElementById("loginPassword").value;
-                request.send(JSON.stringify({Username:email,Password:password}));
+            //     const request = new XMLHttpRequest();
+            //     request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/login", true);
+            //     request.withCredentials=true;
+            //     request.setRequestHeader("content-type","application/json");
+            //     request.onreadystatechange = () => {
+            //          if (request.readyState == 4 && request.status === 200) {
+            //             const data = JSON.parse(request.response);
+            //             console.log(data[0].FirstName);
+            //             //window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
+                        
+            //       }
+            //    };
+            //     const email = document.getElementById("loginmail").value;
+            //     const password = document.getElementById("loginPassword").value;
+            //     request.send(JSON.stringify({Username:email,Password:password}));
                 
-                event.preventDefault();
-            },
-            false
-            );
-    </script>
+            //     event.preventDefault();
+            // },
+            // false
+            // );
+    
     
 </body>
 
