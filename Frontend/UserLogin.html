@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Made by Dipshikha Ghosh -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -95,6 +95,10 @@
                         console.log("Your Cookie : " + document.cookie);
                         window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
                         
+                  } else if (request.status === 400){
+                    alert("Incorrect Credentials! Please Try Again")
+                  } else {
+                    alert("Internal Server Error! Connect with BloTS Admin")
                   }
                };
                 const email = document.getElementById("loginmail").value;
