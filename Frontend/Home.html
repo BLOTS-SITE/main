@@ -50,7 +50,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a class="nav-item nav-link">Logout</a>
+                    <input id="userlogout" class="nav-item nav-link border-0 text-end" value="Logout"/>
                     
                 </div>
                 
@@ -187,6 +187,21 @@
     <script>
         let decodedCookie = decodeURIComponent(document.cookie);
         console.log(decodedCookie);
+        const logoutbtnclick = document.getElementById("userlogout");
+        logoutbtnclick.addEventListener("click", (event)=>{
+            const request = new XMLHttpRequest();            
+            request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/logout", true);
+            
+            request.onreadystatechange = () => {
+                console.log(request.response);
+                alert(request.response);
+                if (request.status === 200) {
+                    window.location.assign('https://blots-site.github.io/main/Frontend/UserLogin.html');
+                  }
+            };
+            request.send(JSON.stringify({hashNumber:hashnum}));
+            event.preventDefault();
+        });
     </script>
 </body>
 
