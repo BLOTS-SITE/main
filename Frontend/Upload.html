@@ -48,10 +48,10 @@
 
                             </div><br><br>
                             <div class="row g-3">
-                                <div class="col-sm-6" >
+                                <div class="col-sm-6" hidden>
                                     <div class="form-outline">
                                         <input type="text" class="form-control" id="IdNumberT" name="IdNumberT" placeholder="Your ID Number"
-                                            required>
+                                        >
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -80,10 +80,10 @@
                                     </div>
                              </div>
                              <div class="col-sm-6">
-                              <div class="input-group">
-                                 <label class="form-control" for="file">Upload Will</label>
-                                 <input type="file" id="testament" name="testament" accept=".PDF"           class="form-control" placeholder="Upload ID Proof" required hidden/>
-                                 <label class="form-control" id="idproof">No File</label>
+                              <div class="input-group" >
+                                <p class="mb-3">Your Will </p>
+                                 <input type="file" id="testament" name="testament" accept=".PDF" max-size="2000" class="form-control" placeholder="Upload ID Proof" />
+
                               </div>
                               </div>
                                 <div class="col-sm-12">
@@ -141,7 +141,21 @@
          </script>
          
     </div>
-    
+    <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <p class="border-bottom"> &copy; This website does not belong to a real company. It is a project for the master in  Web Engineering TU Chemnitz. 2022</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Copyright End -->
 </body>
 
 </html>
