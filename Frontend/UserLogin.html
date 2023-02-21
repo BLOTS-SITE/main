@@ -90,14 +90,14 @@
                 request.onreadystatechange = () => {
                      if (request.readyState == 4 && request.status === 200) {
                         const data = JSON.parse(request.response);
-                        var curCookie = "Name=" + data[0].FirstName;
+                        var curCookie = "Name=" + data[0].FirstName + "Id="+data[0].idNumber;
                         document.cookie = curCookie;
                         console.log("Your Cookie : " + document.cookie);
                         window.location.assign('https://blots-site.github.io/main/Frontend/Home.html');
                         
                   } else if (request.status === 400){
                     alert("Incorrect Credentials! Please Try Again")
-                  } else {
+                  } else if (request.status === 500){
                     alert("Internal Server Error! Connect with BloTS Admin")
                   }
                };
