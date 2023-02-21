@@ -50,7 +50,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <input id="userlogout" class="nav-item nav-link border-0 text-end" value="Logout"/>
+                    <input id="userlogout" class="btn btn-primary w-5 py-2 border-0 text-center" value="Logout"/>
                     
                 </div>
                 
@@ -199,7 +199,7 @@
                     window.location.assign('https://blots-site.github.io/main/Frontend/UserLogin.html');
                   }
             };
-            request.send(JSON.stringify({hashNumber:hashnum}));
+            request.send();
             event.preventDefault();
         });
     </script>
