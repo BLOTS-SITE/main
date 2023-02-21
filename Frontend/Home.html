@@ -103,15 +103,15 @@
                         <h4 class="mb-0">Upload</h4>
                     </div>
                 </div>
-                <div class="project-item pe-5 pb-5">
+                <div class="project-item pe-5 pb-5" id="mywill" onclick="gethash()">
                     <div class="project-img mb-3">
                         <img class="img-fluid rounded" src="https://blots-site.github.io/main/img/service-7.jpg" alt="">
-                        <a href="https://blots-site.github.io/main/Frontend/Mywill.html">
+                        <a>
                             <i class="fa fa-link fa-3x text-primary"></i>
                         </a>
                     </div>
                     <div class="project-title">
-                        <h4 class="mb-0">My Will</h4>
+                        <input class="mb-0 bg-transparent border-0 h4" value="My Testament"/>
                     </div>
                 </div>
             </div>
@@ -206,6 +206,35 @@
             request.send();
             event.preventDefault();
         });
+        // const getwill = document.getElementById("mywill");
+        // getwill.addEventListener("click", (event)=>{
+        //     const request = new XMLHttpRequest();            
+        //     request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestamentHash", true);
+        //     request.withCredentials=true;
+        //     request.onreadystatechange = () => {
+        //         console.log(request.response);
+        //         if (request.status === 200) {
+        //             console.log("request.response");
+        //           }
+        //     };
+        //     console.log(loggedinID)
+        //     request.send({hashNumber:loggedinID});
+        //     event.preventDefault();
+        // });
+        function gethash(){
+            const request = new XMLHttpRequest();            
+            request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestamentHash", true);
+            request.withCredentials=true;
+            request.onreadystatechange = () => {
+                console.log(request.response);
+                if (request.status === 200) {
+                    console.log("request.response");
+                  }
+            };
+            console.log(loggedinID)
+            request.send({hashNumber:loggedinID});
+            event.preventDefault();
+        }
     </script>
 </body>
 
