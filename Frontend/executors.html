@@ -46,7 +46,7 @@
                             </div><br><br>
 
                                             <p class="mb-4">Dear Executor,<br>Please attach the necessary documents, if you are the legal executor of the will.</p>
-                                            <form method="post" id="requestRelease" enctype="multipart/form-data" action="https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease">
+                                            <form method="post" id="requestRelease" enctype="multipart/form-data">
                                                 <div class="row g-3">
                                                     <div class="col-md-12">
                                                        
@@ -86,7 +86,7 @@
                                             (event) => {
                                                 const  formData= new FormData(form);
                                                 const request = new XMLHttpRequest();
-                                                request.open("open","https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease", true);
+                                                request.open("Post","https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease", true);
                                                 request.onreadystatechange= ()=> {
                                                 console.log("0");
                                                 console.log(request.response);
