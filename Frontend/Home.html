@@ -191,7 +191,7 @@
         logoutbtnclick.addEventListener("click", (event)=>{
             const request = new XMLHttpRequest();            
             request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/logout", true);
-            
+            request.withCredentials=true;
             request.onreadystatechange = () => {
                 console.log(request.response);
                 alert(request.response);
