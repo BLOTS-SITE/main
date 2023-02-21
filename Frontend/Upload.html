@@ -48,33 +48,33 @@
 
                             </div><br><br>
                             <div class="row g-3">
-                                <div class="col-sm-6">
+                                <div class="col-sm-6" >
                                     <div class="form-outline">
-                                        <input type="text" class="form-control" id="firstName" name="IdNumberT" placeholder="Your ID Number"
+                                        <input type="text" class="form-control" id="IdNumberT" name="IdNumberT" placeholder="Your ID Number"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
-                                        <input type="text" class="form-control" id="lastName" name="exIdNumber" placeholder="Executor's ID Number"
+                                        <input type="text" class="form-control" id="exIdNumber" name="exIdNumber" placeholder="Executor's ID Number"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
-                                        <input type="text" id="dateOfBirth" name="exFirstName" placeholder="Executor's First Name"
+                                        <input type="text" id="xFirstName" name="exFirstName" placeholder="Executor's First Name"
                                             class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                  <div class="form-outline">
-                                     <input type="text" id="dateOfBirth" name="exLastName" placeholder="Executor's Last Name"
+                                     <input type="text" id="exLastName" name="exLastName" placeholder="Executor's Last Name"
                                          class="form-control" required />
                                  </div>
                              </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
-                                        <input type="text" class="form-control" id="email" name="exEmail"
+                                        <input type="text" class="form-control" id="exEmail" name="exEmail" accept=".PDF"
                                             placeholder="Executor's Email" required>
 
                                     </div>
@@ -82,13 +82,13 @@
                              <div class="col-sm-6">
                               <div class="input-group">
                                  <label class="form-control" for="file">Upload Will</label>
-                                 <input type="file" id="file" name="testament" accept=".PDF"     class="form-control" placeholder="Upload ID Proof" required hidden/>
+                                 <input type="file" id="testament" name="testament" accept=".PDF"           class="form-control" placeholder="Upload ID Proof" required hidden/>
                                  <label class="form-control" id="idproof">No File</label>
                               </div>
                               </div>
                                 <div class="col-sm-12">
                                     <div class="form-outline">
-                                        <textarea type="text" id="postalAddress"  name="ExPostalAddress" placeholder="Executor's full Postal Address"
+                                        <textarea type="text" id="postalAddress"  name="postalAddress" placeholder="Executor's full Postal Address"
                                             class="form-control" required></textarea>
                                     </div>
                                 </div>
@@ -103,28 +103,17 @@
          </form>
          
          <!-- JavaScript Functions -->
-         <script>
-            let imageUpload = document.getElementById("file");
-            let uploadMsg = document.getElementById("idproof");
-            // display file name if file has been selected
-            imageUpload.onchange = function() {
-            let input = this.files[0];
-            let text;
-            if (input) {
-               //process input
-               text = imageUpload.value.replace("C:\\fakepath\\", "");
-            } else {
-               text = 'No File';
-            }
-            uploadMsg.innerHTML = text;
-            };
-         </script>
+
          <script>
             const form = document.forms.namedItem("Regform");
             form.addEventListener(
             "submit",
             (event) => {
-               
+                let decodedCookie = decodeURIComponent(document.cookie);
+                console.log(decodedCookie);
+                const cookiesplit = decodedCookie.split("=");
+                let loggedinID = cookiesplit[2];
+                document.getElementById("IdNumberT").value = loggedinID;
                const formData = new FormData(form);
                const request = new XMLHttpRequest();
                request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/updateTestament", true);
@@ -134,7 +123,7 @@
                      console.log(request.responseText);
                      console.log("1");
                      if (request.status === 200) {
-                        alert("Upload Successful! Your Will has been saved!")
+                        alert("Upload Successful!")
                      
                   } else if (request.status === 400){
                      alert("Something Went Wrong! Invalid Input Data!")
