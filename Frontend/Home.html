@@ -189,7 +189,7 @@
         const cookiesplit = decodedCookie.split("=");
         let loggedinName = cookiesplit[1];
         let loggedinID = cookiesplit[2];
-        console.log("loggedinID");
+        console.log(loggedinID);
         const usertext = document.getElementById("userinfo");
         usertext.innerHTML = "Hello " +loggedinName+"! Welcome to BloTS!";
         const logoutbtnclick = document.getElementById("userlogout");
