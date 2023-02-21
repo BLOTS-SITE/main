@@ -188,7 +188,8 @@
         let decodedCookie = decodeURIComponent(document.cookie);
         const cookiesplit = decodedCookie.split("=");
         let loggedinName = cookiesplit[1];
-        console.log(loggedinName)
+        const usertext = document.getElementById("userinfo");
+        usertext.innerHTML = "Hello " +loggedinName+"! Welcome to BloTS!";
         const logoutbtnclick = document.getElementById("userlogout");
         logoutbtnclick.addEventListener("click", (event)=>{
             const request = new XMLHttpRequest();            
