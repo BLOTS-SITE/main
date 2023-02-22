@@ -139,10 +139,7 @@
                         console.log(request.responseText);
                         console.log("1");
                         if (request.status === 200) {
-                            var msg = confirm("Upload Successful!")
-                            if(msg) {
-                                window.location.href = "https://blots-site.github.io/main/Frontend/Home.html"
-                            }
+                            confirm("Upload successful!")
                         } else if (request.status === 400) {
                             alert("Something Went Wrong! Invalid Input Data!")
                         } else {
