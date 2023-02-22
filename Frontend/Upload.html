@@ -30,8 +30,8 @@
     <!-- Template Stylesheet -->
     <link href="https://blots-site.github.io/main/css/style.css" rel="stylesheet">
     <!-- JQuery Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
-    <script src="https://malsup.github.io/jquery.form.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="https://malsup.github.io/jquery.form.js"></script>
 </head>
 
 <body>
@@ -44,131 +44,136 @@
                         <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
                                 style="max-width: 600px;">
-                                <p class="d-inline-block border rounded text-primary fw-bold py-1 px-3">Please enter the information and upload your testament!</p>
+                                <p class="d-inline-block border rounded text-primary fw-bold py-1 px-3">Please enter the
+                                    information and upload your testament!</p>
 
                             </div><br><br>
                             <div class="row g-3">
                                 <div class="col-sm-6" hidden>
                                     <div class="form-outline">
-                                        <input type="text" class="form-control" id="IdNumberT" name="IdNumberT" placeholder="Your ID Number"
-                                        >
+                                        <input type="text" class="form-control" id="IdNumberT" name="IdNumberT"
+                                            placeholder="Your ID Number">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
-                                        <input type="text" class="form-control" id="exIdNumber" name="exIdNumber" placeholder="Executor's ID Number"
-                                            required>
+                                        <input type="text" class="form-control" id="exIdNumber" name="exIdNumber" maxlength="10"
+                                            placeholder="Executor's ID Number" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
-                                        <input type="text" id="exFirstName" name="exFirstName" placeholder="Executor's First Name"
-                                            class="form-control" required />
+                                        <input type="text" id="exFirstName" name="exFirstName" maxlength="15"
+                                            placeholder="Executor's First Name" class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                 <div class="form-outline">
-                                     <input type="text" id="exLastName" name="exLastName" placeholder="Executor's Last Name"
-                                         class="form-control" required />
-                                 </div>
+                                    <div class="form-outline">
+                                        <input type="text" id="exLastName" name="exLastName" maxlength="15"
+                                            placeholder="Executor's Last Name" class="form-control" required />
+                                    </div>
 
-                             </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
                                         <input type="text" class="form-control" id="exEmail" name="exEmail"
                                             placeholder="Executor's Email" required>
 
                                     </div>
-                             </div>
+                                </div>
                                 <div class="col-sm-12">
                                     <div class="form-outline">
-                                        <textarea type="text" id="ExPostalAddress"  name="ExPostalAddress" placeholder="Executor's full Postal Address"
-                                            class="form-control" required></textarea>
+                                        <textarea type="text" id="ExPostalAddress" name="ExPostalAddress"
+                                            placeholder="Executor's full Postal Address" class="form-control"
+                                            required></textarea>
                                     </div>
                                 </div>
-                             <div class="col-sm-6">
-                                <div class="input-group">
-                                    <input type="text" id="exCountryPhone" name="exCountryPhone" placeholder="Country Code" class="form-control"
-                                        required />
-                                    <input type="text" id="exPhoneNumber" name="exPhoneNumber" placeholder="Phone Number" class="form-control"
-                                        required />
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <input type="text" id="exCountryPhone" name="exCountryPhone"
+                                            placeholder="Country Code" class="form-control" required />
+                                        <input type="text" id="exPhoneNumber" name="exPhoneNumber" maxlength="15"
+                                            placeholder="Phone Number" class="form-control" required />
+                                    </div>
                                 </div>
-                            </div>
-                             <div class="col-sm-6">
-                              <div class="input-group" >
-                                <!-- <p class="mb-3">Your Will </p> -->
-                                 <input type="file" id="testament" name="testament" accept=".PDF" max-size="2000" class="form-control" placeholder="Upload ID Proof" />
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <!-- <p class="mb-3">Your Will </p> -->
+                                        <input type="file" id="testament" name="testament" accept=".PDF" max-size="2000"
+                                            class="form-control" placeholder="Upload ID Proof" />
 
-                              </div>
-                              </div>
+                                    </div>
+                                </div>
 
                                 <div class="col-12 text-center">
-                                    <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Submit"  />
+                                    <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit"
+                                        value="Submit" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-         </form>
-         
-         <!-- JavaScript Functions -->
+        </form>
 
-         <script>
+        <!-- JavaScript Functions -->
+
+        <script>
             const form = document.forms.namedItem("Regform");
             form.addEventListener(
-            "submit",
-            (event) => {
-               let decodedCookie = decodeURIComponent(document.cookie);
-               console.log(decodedCookie);
-               const cookiesplit = decodedCookie.split("=");
-               let loggedinID = cookiesplit[2];
-               document.getElementById("IdNumberT").value = loggedinID;
-               const formData = new FormData(form);
-               const request = new XMLHttpRequest();
-               request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/updateTestament", true);
-               request.withCredentials=true;
-               request.onreadystatechange = () => {
-                  console.log("0");
-                     console.log(request.response);
-                     console.log(request.responseText);
-                     console.log("1");
-                     if (request.status === 200) {
-                       alert("Upload Successful!")
-                  } else if (request.status === 400){
-                     alert("Something Went Wrong! Invalid Input Data!")
-                  } else {
-                     alert("Server Internal Error! Please come back later!")
-                  }
-                   
-               };
+                "submit",
+                (event) => {
+                    let decodedCookie = decodeURIComponent(document.cookie);
+                    console.log(decodedCookie);
+                    const cookiesplit = decodedCookie.split("=");
+                    let loggedinID = cookiesplit[2];
+                    document.getElementById("IdNumberT").value = loggedinID;
+                    const formData = new FormData(form);
+                    const request = new XMLHttpRequest();
+                    request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/updateTestament", true);
+                    request.withCredentials = true;
+                    request.onreadystatechange = () => {
+                        console.log("0");
+                        console.log(request.response);
+                        console.log(request.responseText);
+                        console.log("1");
+                        if (request.status === 200) {
+                            alert("Upload Successful!")
+                        } else if (request.status === 400) {
+                            alert("Something Went Wrong! Invalid Input Data!")
+                        } else {
+                            alert("Server Internal Error! Please come back later!")
+                        }
 
-               request.send(formData);
-               
-               event.preventDefault();
-            },
-            false
+                    };
+
+                    request.send(formData);
+
+                    event.preventDefault();
+                },
+                false
             );
-         </script>
-         <script>
+        </script>
+        <script>
 
-    </script>
-         
+        </script>
+
     </div>
     <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <p class="border-bottom"> &copy; This website does not belong to a real company. It is a project for the master in  Web Engineering TU Chemnitz. 2022</p>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                    </div>
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="border-bottom"> &copy; This website does not belong to a real company. It is a project for
+                        the master in Web Engineering TU Chemnitz. 2022</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                 </div>
             </div>
         </div>
+    </div>
     <!-- Copyright End -->
 </body>
 
