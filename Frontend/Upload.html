@@ -103,7 +103,7 @@
                               </div>
 
                                 <div class="col-12 text-center">
-                                    <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Submit"  />
+                                    <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Submit" onclick="buttonClick();" />
                                 </div>
                             </div>
                         </div>
@@ -114,6 +114,11 @@
          
          <!-- JavaScript Functions -->
 
+        <script>
+        function buttonClick(){
+            window.confirm("Upload Successful!");
+            }
+        </script>
          <script>
             const form = document.forms.namedItem("Regform");
             form.addEventListener(
@@ -135,7 +140,7 @@
                      console.log("1");
                      if (request.status === 200) {
                        console.log("Upload Successful!")
-                     
+                       buttonClick();
                   } else if (request.status === 400){
                      console.log("Something Went Wrong! Invalid Input Data!")
                   } else {
