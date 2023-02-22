@@ -110,6 +110,8 @@
                                 </div>
                                 <div class="col-12 text-center">
                                     <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Submit" />
+                                    <br><br><br>
+                                    <a href="https://blots-site.github.io/main/Frontend/Home.html">Back to Home Page</a>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +141,8 @@
                         console.log(request.responseText);
                         console.log("1");
                         if (request.status === 200) {
-                            confirm("Upload successful!")
+                            alert("Upload successful!")
+                            window.location.href = "https://blots-site.github.io/main/Frontend/Home.html"
                         } else if (request.status === 400) {
                             alert("Something Went Wrong! Invalid Input Data!")
                         } else {
