@@ -124,9 +124,6 @@
                const cookiesplit = decodedCookie.split("=");
                let loggedinID = cookiesplit[2];
                document.getElementById("IdNumberT").value = loggedinID;
-               function buttonClick(){
-                    window.confirm("Upload Successful!");
-                }
                const formData = new FormData(form);
                const request = new XMLHttpRequest();
                request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/updateTestament", true);
@@ -138,7 +135,7 @@
                      console.log("1");
                      if (request.status === 200) {
                        console.log("Upload Successful!");
-                       buttonClick();
+                        buttonClick();
                      
                   } else if (request.status === 400){
                      console.log("Something Went Wrong! Invalid Input Data!");
@@ -155,6 +152,11 @@
             false
             );
          </script>
+         <script>
+        function buttonClick(){
+            window.confirm("Upload Successful!");
+            }
+    </script>
          
     </div>
     <!-- Copyright Start -->
