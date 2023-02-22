@@ -206,30 +206,25 @@
             request.send();
             event.preventDefault();
         });
-        // const getwill = document.getElementById("mywill");
-        // getwill.addEventListener("click", (event)=>{
-        //     const request = new XMLHttpRequest();            
-        //     request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestamentHash", true);
-        //     request.withCredentials=true;
-        //     request.onreadystatechange = () => {
-        //         console.log(request.response);
-        //         if (request.status === 200) {
-        //             console.log("request.response");
-        //           }
-        //     };
-        //     console.log(loggedinID)
-        //     request.send({hashNumber:loggedinID});
-        //     event.preventDefault();
-        // });
+     
         function gethash(){
             const request = new XMLHttpRequest();            
             request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestamentHash", true);
             request.withCredentials=true;
             request.setRequestHeader("content-type","application/json");
             request.onreadystatechange = () => {
-                console.log(request.response);
+                console.log(request.responseText);
                 if (request.status === 200) {
                     console.log("request.response");
+                    window.location.assign('https://blots-site.github.io/main/Frontend/Mywill.html');
+                    const hash = JSON.parse(request.response);
+                    console.log(hash[0].Hash);
+                    var hashCookie = "Hash=" + hash[0].Hash;
+                    document.cookie = hashCookie;
+                    console.log("Your Cookie : " + document.cookie);
+                    
+                  } else{
+                    console.log("Something went wrong with accessing Browser Cookie!")
                   }
             };
             console.log(loggedinID)

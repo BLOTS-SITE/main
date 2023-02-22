@@ -188,22 +188,24 @@
     <!-- Template Javascript -->
     <script src="https://blots-site.github.io/main/js/main.js"></script>
     <script>
+        let decodedCookie = decodeURIComponent(document.cookie);
+        const cookiesplit = decodedCookie.split("=");
+        let hashcode = cookiesplit[1];
         const viewwill = document.getElementById("getwill");
         viewwill.addEventListener("click", (event)=>{
             const request = new XMLHttpRequest();
-            const hashnum = document.getElementById("willid");
-            
-            request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestament", true);
+            // const hashnum = document.getElementById("willid");
+            request.withCredentials=true;
+            request.setRequestHeader("content-type","application/json");
+            request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestament", true);
             
             request.onreadystatechange = () => {
-                console.log(request.response);
-                alert(request.response);
                 if (request.status === 200) {
                     console.log("Request Successful")
                     document.getElementById("displaywill").innerHTML = request.response;
                   }
             };
-            request.send(JSON.stringify({hashNumber:hashnum}));
+            request.send(JSON.stringify({hashNumber:hashcode}));
             event.preventDefault();
         });
     </script>
