@@ -233,7 +233,7 @@
                   }
             };
             console.log(loggedinID)
-            request.send({IdTestator:loggedinID});
+            request.send(JSON.stringify({IdTestator:loggedinID}));
             event.preventDefault();
         }
     </script>
