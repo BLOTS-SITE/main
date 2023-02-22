@@ -44,10 +44,12 @@
                         <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
                                 style="max-width: 600px;">
-                                <p class="d-inline-block border rounded text-primary fw-bold py-1 px-3">Please enter the
-                                    information and upload your testament!</p>
-
+                                <p class="d-inline-block border rounded text-primary fw-bold py-1 px-3">Upload Testament</p>
+                                    
                             </div><br><br>
+                        
+                            <p class="mb-4">Dear Testator,<br>Please fill in the required information and upload the testament!</p>
+                       
                             <div class="row g-3">
                                 <div class="col-sm-6" hidden>
                                     <div class="form-outline">
@@ -60,33 +62,28 @@
                                         <input type="text" class="form-control" id="exIdNumber" name="exIdNumber" maxlength="10"
                                             placeholder="Executor's ID Number" required>
                                     </div>
+                                    <code>*Up to 10 numbers</code>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
                                         <input type="text" id="exFirstName" name="exFirstName" maxlength="15"
                                             placeholder="Executor's First Name" class="form-control" required />
                                     </div>
+                                    <code>*Up to 15 characters</code>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
                                         <input type="text" id="exLastName" name="exLastName" maxlength="15"
                                             placeholder="Executor's Last Name" class="form-control" required />
                                     </div>
-
+                                    
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
                                         <input type="text" class="form-control" id="exEmail" name="exEmail"
                                             placeholder="Executor's Email" required>
-
                                     </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="form-outline">
-                                        <textarea type="text" id="ExPostalAddress" name="ExPostalAddress"
-                                            placeholder="Executor's full Postal Address" class="form-control"
-                                            required></textarea>
-                                    </div>
+                                    
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="input-group">
@@ -104,7 +101,13 @@
 
                                     </div>
                                 </div>
-
+                                <div class="col-sm-12">
+                                    <div class="form-outline">
+                                        <textarea type="text" id="ExPostalAddress" name="ExPostalAddress"
+                                            placeholder="Executor's full Postal Address" class="form-control"
+                                            required></textarea>
+                                    </div>
+                                </div>
                                 <div class="col-12 text-center">
                                     <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit"
                                         value="Submit" />
