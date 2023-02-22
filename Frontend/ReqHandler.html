@@ -177,6 +177,7 @@
             const request = new XMLHttpRequest();
             console.log("executed")
             request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/getListRequest", true);
+            request.withCredentials=true;
             request.onreadystatechange = () => {
                 console.log(request.response);
             };
