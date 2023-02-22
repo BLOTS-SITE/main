@@ -225,6 +225,7 @@
             const request = new XMLHttpRequest();            
             request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestamentHash", true);
             request.withCredentials=true;
+            request.setRequestHeader("content-type","application/json");
             request.onreadystatechange = () => {
                 console.log(request.response);
                 if (request.status === 200) {
