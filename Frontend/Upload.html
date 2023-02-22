@@ -109,9 +109,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <form onsubmit="return send()">
-                                        <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Submit" />
-                                    </form>
+                                    <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Submit" />
                                 </div>
                             </div>
                         </div>
@@ -121,13 +119,6 @@
         </form>
 
         <!-- JavaScript Functions -->
-        <script>
-            function send() {
-                alert("hahaha");
-                return false
-            } 
-        </script>
-
         <script>
             const form = document.forms.namedItem("Regform");
             form.addEventListener(
@@ -149,6 +140,7 @@
                         console.log("1");
                         if (request.status === 200) {
                             alert("Upload Successful!")
+                            window.location.href = "https://blots-site.github.io/main/Frontend/Home"
                         } else if (request.status === 400) {
                             alert("Something Went Wrong! Invalid Input Data!")
                         } else {
