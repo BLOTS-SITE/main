@@ -109,8 +109,9 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit"
-                                        value="Submit" />
+                                    <form onsubmit="return send()">
+                                        <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Submit" />
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -120,6 +121,12 @@
         </form>
 
         <!-- JavaScript Functions -->
+        <script>
+            function send() {
+                alert("hahaha");
+                return false
+            } 
+        </script>
 
         <script>
             const form = document.forms.namedItem("Regform");
