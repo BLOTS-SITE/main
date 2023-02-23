@@ -140,13 +140,10 @@
                         console.log(request.responseText);
                         console.log("1");
                         if (request.status === 200) {
-                            //alert("Upload successful!")
-                            //alert(request.responseText)
-                            let str = ""
-                            document.getElementById('container').innerHTML = str;
-                            //window.location.href = "https://blots-site.github.io/main/Frontend/Home.html"
+                            alert("Upload successful!")
+                            window.location.href = "https://blots-site.github.io/main/Frontend/Home.html"
                         } else if (request.status === 400) {
-                            alert("Something Went Wrong! Invalid Input Data!")
+                            alert("Something Went Wrong! ")
                         } else {
                             alert("Server Internal Error! Please come back later!")
                         }
