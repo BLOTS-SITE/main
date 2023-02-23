@@ -179,7 +179,7 @@
             request.withCredentials = true;
             request.onreadystatechange = () => {
                 if (request.readyState == 4 && request.status === 200) {
-                    const reqlist = [JSON.parse(request.response)];
+                    const reqlist = JSON.parse(request.response);
                     let col = [];
                     for (let i = 0; i < reqlist.length; i++) {
                         for (let key in reqlist[i]) {
