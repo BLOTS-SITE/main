@@ -231,10 +231,12 @@
             request.onreadystatechange = () => {
                 if (request.readyState == 4 && request.status === 200) {
                     let reqdata = JSON.parse(request.response)
-                    console.log(reqdata[0].DeathCertificate);
-                    console.log(reqdata[0].DeathCertificateN);
+                    const dcbase64= reqdata[0].DeathCertificate;
+                    const dcname= reqdata[0].DeathCertificateN;
                     console.log(reqdata[0].IdExecutorP);
                     console.log(reqdata[0].IdExecutorN);
+                    const dccert =dcbase64.blob();
+                    
                 }
             };
             request.send(JSON.stringify({ idRequest: reqid }));
