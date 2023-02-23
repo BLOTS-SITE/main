@@ -97,7 +97,7 @@
                 class="form-control" required />
         </div>
         <div class="col-12 text-center">
-            <input class="btn btn-primary w-100 py-3" type="submit" id="getreqinfo" value="View Reuest Info" />
+            <input class="btn btn-primary w-100 py-3" type="submit" id="getreqinfo" value="View Request Info" />
         </div>
 
     </div>
@@ -230,7 +230,11 @@
             request.setRequestHeader("content-type", "application/json");
             request.onreadystatechange = () => {
                 if (request.readyState == 4 && request.status === 200) {
-                    console.log(request.response);
+                    let reqdata = JSON.parse(request.response)
+                    console.log(reqdata[0].DeathCertificate);
+                    console.log(reqdata[0].DeathCertificateN);
+                    console.log(reqdata[0].IdExecutorP);
+                    console.log(reqdata[0].IdExecutorN);
                 }
             };
             request.send(JSON.stringify({ idRequest: reqid }));
