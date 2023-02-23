@@ -141,8 +141,6 @@
                         console.log("1");
                         if (request.status === 200) {
                             alert("Upload successful! Press Yes back to Home page.")
-                            let str = "Your Testament has been storage, however It will not be valid until your executor confirm his/her email"
-                            document.getElementById("container").value = str
                             window.location.href = "https://blots-site.github.io/main/Frontend/Home.html"
                         } else if (request.status === 400) {
                             alert("Something Went Wrong! Please check Email and Phone number.")
