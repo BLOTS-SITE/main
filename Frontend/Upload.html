@@ -138,11 +138,11 @@
                         console.log("0");
                         console.log(request.response);
                         console.log(request.responseText);
+                        let str = console.log(request.responseText);
                         console.log("1");
                         if (request.status === 200) {
                             alert("Upload successful! Press Yes back to Home page.")
                             //let str = "Your Testament has been storage, however It will not be valid until your executor confirm his/her email"
-                            let str = `<span>Your Testament has been storage, however It will not be valid until your executor confirm his/her email</span>`
                             document.getElementById("container") = str
                             window.location.href = "https://blots-site.github.io/main/Frontend/Home.html"
                         } else if (request.status === 400) {
