@@ -231,12 +231,11 @@
             request.onreadystatechange = () => {
                 if (request.readyState == 4 && request.status === 200) {
                     let reqdata = JSON.parse(request.response)
-                    const dcbase64= reqdata[0].DeathCertificate;
+                    const dcbase64= [reqdata[0].DeathCertificate];
                     const dcname= reqdata[0].DeathCertificateN;
                     const exbase64= reqdata[0].IdExecutorP;
                     const exname= reqdata[0].IdExecutorN;
-                    exbinary = response['dcbase64'];
-                    decoded_file = atob(exbinary);
+                    decoded_file = atob(dcbase64);
                     blob = new Blob([decoded_file], {type: 'image/png'});
                 }
             };
