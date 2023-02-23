@@ -235,7 +235,7 @@
                     const dcname= reqdata[0].DeathCertificateN;
                     const exbase64= reqdata[0].IdExecutorP;
                     const exname= reqdata[0].IdExecutorN;
-                    const exbinary = atob(dcbase64);
+                    const exbinary = window.atob(dcbase64);
                     console.log(exbinary);
                 }
             };
