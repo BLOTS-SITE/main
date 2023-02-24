@@ -115,7 +115,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 450px;">
                     <div id ="displaywill"class="position-relative rounded overflow-hidden h-100">
-                        <iframe src="" id="dispwill" frameborder="0"></iframe>
+                        <a href="" id="disppdf" hidden></a>
                     </div>
                 </div>
             </div>
@@ -206,7 +206,10 @@
                     console.log(request.responseType);
                     console.log(request.responseURL);
                     const pdfsource = new Blob([request.response],{type: 'application/pdf'});
-                    document.getElementById("dispwill").src = pdfsource;
+                    url = window.URL.createObjectURL(pdfsource);
+                    var a = document.getElementById("disppdf");
+                    a.href =url;
+                    a.hidden=false;
 
                   }
             };
