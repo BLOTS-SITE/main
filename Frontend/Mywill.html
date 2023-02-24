@@ -195,10 +195,9 @@
         const viewwill = document.getElementById("getwill");
         viewwill.addEventListener("click", (event)=>{
             const request = new XMLHttpRequest();
-            // const hashnum = document.getElementById("willid");
+            request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestament", true);
             request.withCredentials=true;
             request.setRequestHeader("content-type","application/json");
-            request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestament", true);
             console.log("Code executed")
             request.onreadystatechange = () => {
                 console.log(request.response);
