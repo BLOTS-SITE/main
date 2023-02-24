@@ -84,32 +84,14 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Show My Existing Wills</p>
-                    <h3 class="display-5 mb-4">Kindly provide us the below details</h3>
+                    <h3 class="display-5 mb-4">Show my Existing Will</h3>
+                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">In this section you can view you will which you have uploaded before</p>
                     <form>
                         <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                    <label for="name">Your Name</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email">Your Email</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="willid" placeholder="Will ID" required>
-                                    <label for="willid">Your Will ID</label>
-                                </div>
-                            </div>
-                            
                             <div class="col-12">
                                 <input class="btn btn-primary py-3 px-5" id="getwill" type="submit" value="Get Will"/>
-                                <a class="btn btn-primary py-3 px-5" href="" id="disppdf" hidden>Show Will</a>
+                                <a class="btn btn-primary py-3 px-5" href="" id="disppdf" hidden>Download Will</a>
+                                <p class="alert alert-info mt-5" id="resp" hidden></p>
                             </div>
                         </div>
                     </form>
@@ -194,18 +176,18 @@
             request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestament", true);
             request.withCredentials=true;
             request.setRequestHeader("content-type","application/json");
-            console.log("Code executed")
             request.responseType = "blob";
             request.onreadystatechange = () => {
-                console.log(request.response);
+                var msg =document.getElementById("resp");
                 if (request.readyState == 4 && request.status === 200) {
-
-                    //const pdfsource = new Blob([request.response],{type: 'application/pdf'});
                     url = window.URL.createObjectURL(request.response);
                     var a = document.getElementById("disppdf");
                     a.href =url;
                     a.hidden=false;
-
+                  } else if (request.response === 400){
+                    msg.innerHTML= "No Uploaded Will Found!";
+                  } else if(request.response === 500){
+                    msg.innerHTML= "Internal Server Error! Connect with Blots Admin!";
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
