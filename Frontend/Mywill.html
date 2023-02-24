@@ -201,9 +201,10 @@
             console.log("Code executed")
             request.onreadystatechange = () => {
                 console.log(request.response);
-                if (request.status === 200) {
-                    console.log("Request Successful")
-                    // window.location.assign(request.response);
+                if (request.readyState == 4 && request.status === 200) {
+                    console.log(request.getResponseHeader('etag'));
+                    
+
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
