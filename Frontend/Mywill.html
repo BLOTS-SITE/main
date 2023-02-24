@@ -204,7 +204,7 @@
                 console.log(request.response);
                 if (request.status === 200) {
                     console.log("Request Successful")
-                    window.location.assign(request.response);
+                    // window.location.assign(request.response);
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
