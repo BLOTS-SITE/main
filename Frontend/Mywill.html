@@ -115,7 +115,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 450px;">
                     <div id ="displaywill"class="position-relative rounded overflow-hidden h-100">
-                        <iframe src="" frameborder="0"></iframe>
+                        <iframe src="" id="dispwill" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -203,7 +203,8 @@
                 console.log(request.response);
                 if (request.readyState == 4 && request.status === 200) {
                     console.log(request.getResponseHeader('etag'));
-                    
+                    const pdfsource = request.response;
+                    document.getElementById("dispwill").src = pdfsource;
 
                   }
             };
