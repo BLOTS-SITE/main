@@ -198,8 +198,8 @@
             request.onreadystatechange = () => {
                 console.log(request.response);
                 if (request.readyState == 4 && request.status === 200) {
-                    const pdfsource = new Blob([request.response],{type: 'application/pdf'});
-                    url = window.URL.createObjectURL(pdfsource);
+                    //const pdfsource = new Blob([request.response],{type: 'application/pdf'});
+                    url = window.URL.createObjectURL(request.response);
                     var a = document.getElementById("disppdf");
                     a.href =url;
                     a.hidden=false;
