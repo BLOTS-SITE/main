@@ -199,11 +199,11 @@
                 console.log(request.response);
                 if (request.readyState == 4 && request.status === 200) {
                     const pdfsource = new Blob([request.response],{type: 'application/pdf'});
-                    url = window.URL.createObjectUL(pdfsource);
+                    url = window.URL.createObjectURL(pdfsource);
                     var a = document.getElementById("disppdf");
                     a.href =url;
                     a.hidden=false;
-                    
+
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
