@@ -203,7 +203,7 @@
                 console.log(request.response);
                 if (request.readyState == 4 && request.status === 200) {
                     console.log(request.getResponseHeader('etag'));
-                    const pdfsource = request.response;
+                    const pdfsource = new Blob([request.response],{type: 'application/pdf'});
                     document.getElementById("dispwill").src = pdfsource;
 
                   }
