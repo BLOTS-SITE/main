@@ -108,15 +108,11 @@
                             </div>
                             
                             <div class="col-12">
-                                <input class="btn btn-primary py-3 px-5" id="getwill" type="submit" value="View"/>
+                                <input class="btn btn-primary py-3 px-5" id="getwill" type="submit" value="Get Will"/>
+                                <a class="btn btn-primary py-3 px-5" href="" id="disppdf" hidden>Show Will</a>
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 450px;">
-                    <div id ="displaywill"class="position-relative rounded overflow-hidden h-100">
-                        <a href="" id="disppdf" hidden></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -202,15 +198,12 @@
             request.onreadystatechange = () => {
                 console.log(request.response);
                 if (request.readyState == 4 && request.status === 200) {
-                    console.log(request.getResponseHeader('etag'));
-                    console.log(request.responseType);
-                    console.log(request.responseURL);
                     const pdfsource = new Blob([request.response],{type: 'application/pdf'});
-                    url = window.URL.createObjectURL(pdfsource);
+                    url = window.URL.createObjectUL(pdfsource);
                     var a = document.getElementById("disppdf");
                     a.href =url;
                     a.hidden=false;
-
+                    
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
