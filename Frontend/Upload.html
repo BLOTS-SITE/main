@@ -131,9 +131,10 @@
                 "submit",
                 (event) => {
                     let decodedCookie = decodeURIComponent(document.cookie);
-                    console.log(decodedCookie);
-                    const cookiesplit = decodedCookie.split("=");
-                    let loggedinID = cookiesplit[2];
+                    const cookiesplit = decodedCookie.split(";");
+                    const cookie2 = cookiesplit[1];
+                    const cookiesplit2 = cookie2.split("=");
+                    let loggedinID = cookiesplit2[2];
                     document.getElementById("IdNumberT").value = loggedinID;
                     const formData = new FormData(form);
                     const request = new XMLHttpRequest();
