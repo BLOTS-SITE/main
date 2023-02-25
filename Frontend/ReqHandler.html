@@ -254,6 +254,7 @@
             request.setRequestHeader("content-type", "application/json");
             request.onreadystatechange = () => {
                 var a = document.createElement("a");
+                var b = document.createElement("a");
                 if (request.readyState == 4 && request.status === 200) {
                     let reqdata = JSON.parse(request.response)
                     var dcbase64= JSON.stringify([reqdata[0].DeathCertificate]); // If you do not stringify the variable becomes and object
@@ -324,9 +325,9 @@
 
                     var blob1 = new Blob(byteArrays1, {type: "octet/stream"}),
                     url1 = window.URL.createObjectURL(blob1);
-                    a.href = url1;
-                    a.download = exname;
-                    a.click();
+                    b.href = url1;
+                    b.download = exname;
+                    b.click();
                     window.URL.revokeObjectURL(url1);
                 }
             };
