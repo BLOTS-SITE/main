@@ -138,6 +138,7 @@
                     const formData = new FormData(form);
                     const request = new XMLHttpRequest();
                     request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/updateTestament", true);
+                    request.withCredentials = true;
                     request.onreadystatechange = () => {
                         console.log("0");
                         console.log(request.response);
