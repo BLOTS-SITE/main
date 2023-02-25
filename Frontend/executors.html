@@ -46,15 +46,16 @@
                             </div><br><br>
 
                                             <p class="mb-4">Dear Executor,<br>Please attach the necessary documents, if you are the legal executor of the will.</p>
-                                            <form method="post" id="requestRelease" enctype="multipart/form-data">
+                                            <form method="post" id="requestRelease" enctype="multipart/form-data" action="https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease">
                                                 <div class="row g-3">
                                                     <div class="col-md-12">
                                                        
                                                         
-                                                            <label for="file"  placeholder="IDProof">Executor ID<span>*</span></label>
+                                                            <label for="file"  placeholder="IDProof">Executor ID<span>*</span></label><br>
                                                             
-                                                            <input name="IdExecutor" id="IdExecutor" class="form-control" accept=".jpg, .jpeg, .png" type="file" data-max-size="300" required></input>
-                                                            <code>data-max-size="300kb"</code>
+                                                            <input name="IdExecutor" id="IdExecutor" class="form-control" accept="image/jpg, image/jpeg, image/png" type="file" data-max-size="300" required></input>
+                                                            <code>Images types accepted: .jpg, .jpeg, .png,  max-size="300kb"</code>
+                                                            <p id="file-result"></p>
                                                        
                                                     </div>
                                                 </div>
@@ -64,26 +65,73 @@
                                                             <div class="form-floating"> </div>
                                                                 
                                                                 <!--size much be 300kb  all type of the imge-->
-                                                                <label for="CertificatedDeath" placeholder="CertificatedDeath" >Uploaded Testator Death Certificate<span>*</span></label>
-                                                               <input type="file"   data-max-size="300"    class="form-control" accept=".jpg, .jpeg, .png" id="CertificatedDeath" name="CertificatedDeath" required></input>
-                                                               <code>data-max-size="300kb"</code>
+                                                                <label for="CertificatedDeath" placeholder="CertificatedDeath" >Uploaded Testator Death Certificate<span>*</span></label><br>
+                                                               <input type="file"   data-max-size="300"    class="form-control" accept="image/jpg, image/jpeg, image/png" id="CertificatedDeath" name="CertificatedDeath" required></input>
+                                                               <code>Images types accepted: .jpg, .jpeg, .png,  max-size="300kb" </code>
+                                                               <p id="file-result1"></p>
                                                             
                                                         </div>
                                                     </div>
                         <br>
+                                                               
                                                     <div class="col-12 text-center">
-                                                        <button id="requestRelease"  class="btn btn-primary w-100 py-3" value="submit" type="submit">Send Request</button>
+                                                        <button id="requestReleaseb"  class="btn btn-primary w-100 py-3" value="submit" type="submit">Send Request</button>
+                                                    </div><br>
+                                                    <div class="col-12 text-center">
+                                                        <p id="demo"></p>
                                                     </div>
-                                                    
                                                 </div>                 
                                                </form>
                                         </div>
                                     </div>
-                                    <script>
+                              
+                                        <script>
+                                              let fileInput = document.getElementById("IdExecutor");
+                                                    
+                                                    let fileResult = document.getElementById("file-result");
+                                                    let fileSubmit = document.getElementById("requestReleaseb");
+                                                    let fileInput1 = document.getElementById("CertificatedDeath");
+                                                      let fileResult1 = document.getElementById("file-result1");
+                                                
+                                                    fileInput.addEventListener("change", function () {
+                                                        if (fileInput.files.length > 0) {
+                                                            const fileSize = fileInput.files.item(0).size;
+                                                            const fileKb = (fileSize / 1024)+ 0.7 ;
+                                                            if (fileKb >= 300) {
+                                                            fileResult.innerHTML = "Please select an Image less than 300KB.";
+                                                            fileSubmit.disabled = true;
+                                                            fileInput.querySelector
+                                                            } else {
+                                                            fileResult.innerHTML =  "A "+ fileKb.toFixed(1)+ "KB. "+"Image is ready to uploaded.";
+                                                            fileSubmit.disabled = false; 
+                                                            
+                                                            }
+                                                        }
+                                                        });
+
+                                                    fileInput1.addEventListener("change", function () {
+                                                        if (fileInput1.files.length > 0) {
+                                                            const fileSize = fileInput1.files.item(0).size;
+                                                            const fileKb = fileSize / 1024 ;
+                                                            if (fileKb >= 300) {
+                                                              
+                                                            fileResult1.innerHTML= "Please select an Image less than 300KB.";
+                                                            fileSubmit.disabled = true;
+                                                            
+                                                        
+                                                            } else {
+                                                            fileResult1.innerHTML =  "A "+ fileKb.toFixed(1)+ "KB. "+"Image is ready to uploaded.";
+                                                            fileSubmit.disabled = false; 
+                                                            }
+                                                        }  
+                                                        });
+                                                
+                                 
                                         const form= document.forms.namedItem("requestRelease");
                                         form.addEventListener(
                                             "submit",
                                             (event) => {
+                                              
                                                 const  formData= new FormData(form);
                                                 const request = new XMLHttpRequest();
                                                 request.open("Post","https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease", true);
@@ -93,20 +141,26 @@
                                                 console.log(request.responseText);
                                                 console.log("1");
                                                 if(request.status == 200){
-                                                    alert("Your Request is send")
+                                                    //alert("Your Request is send")
+                                                    document.getElementById("demo").innerHTML = request.responseText;
+                                                    event.target.reset();
+                                                   
                                                      }
                                                      else if (request.status == 400){
-                                                        alert(request.responseText)
+                                                       
+                                                        document.getElementById("demo").innerHTML = request.responseText;
+                                                        event.target.reset();
                                                      }else{
-                                                        alert("Server Internet ERROR")
+                                                        document.getElementById("demo").innerHTML = request.responseText;
+                                                        event.target.reset();
                                                      }
-                    
                                                 };
                                                 request.send(formData);
                                                 event.preventDefault();
                                             },
-                                            false
+                                            false  
                                         );
+            
                                      </script>   
                                     
                                 </div>
