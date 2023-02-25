@@ -267,7 +267,8 @@
                     array1 = exbase64.split('b\'');
                     exbase64t = array1[1];
                     lenghexbase64 = exbase64t.length
-                    exbase64t = exbase64t.substring(0,lenghDcbase64-3)
+                    exbase64t = exbase64t.substring(0,lenghexbase64-3)
+
                     // Name of the files
                     const dcname= reqdata[0].DeathCertificateN;
                     const exname= reqdata[0].IdExecutorN;
