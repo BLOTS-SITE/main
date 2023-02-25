@@ -75,7 +75,7 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 1000px;">
-                <p id="userinfo" class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3" style="font-size: 25px;">Hello TestUser Welcome to BloTS!</p>
+                <p id="userinfo" class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3" style="font-size: 25px;"></p>
                 <h1 class="display-5 mb-5">Menu</h1>
             </div>
             <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.3s">
@@ -186,9 +186,11 @@
     <script src="https://blots-site.github.io/main/js/main.js"></script>
     <script>
         let decodedCookie = decodeURIComponent(document.cookie);
-        const cookiesplit = decodedCookie.split("=");
-        let loggedinName = cookiesplit[1];
-        let loggedinID = cookiesplit[2];
+        const cookiesplit = decodedCookie.split(";");
+        const cookie2 = cookiesplit[1];
+        const cookiesplit2 = cookie2.split("=");
+        let loggedinName = cookiesplit2[1];
+        let loggedinID = cookiesplit2[2];
         console.log(loggedinID);
         const usertext = document.getElementById("userinfo");
         usertext.innerHTML = "Hello " +loggedinName+"! Welcome to BloTS!";
