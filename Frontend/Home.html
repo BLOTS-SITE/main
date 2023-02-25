@@ -186,11 +186,9 @@
     <script src="https://blots-site.github.io/main/js/main.js"></script>
     <script>
         let decodedCookie = decodeURIComponent(document.cookie);
-        const cookiesplit = decodedCookie.split(";");
-        const cookie2 = cookiesplit[1];
-        const cookiesplit2 = cookie2.split("=");
-        let loggedinName = cookiesplit2[1];
-        let loggedinID = cookiesplit2[2];
+        const cookiesplit = decodedCookie.split("=");
+        let loggedinName = cookiesplit[1];
+        let loggedinID = cookiesplit[2];
         console.log(loggedinID);
         const usertext = document.getElementById("userinfo");
         usertext.innerHTML = "Hello " +loggedinName+"! Welcome to BloTS!";
@@ -216,8 +214,8 @@
             request.setRequestHeader("content-type","application/json");
             request.onreadystatechange = () => {
                 console.log(request.responseText);
-                if (request.status === 200) {
-                    console.log("request.response");
+                if (request.readyState == 4 && request.status === 200) {
+                    console.log(request.response);
                     window.location.assign('https://blots-site.github.io/main/Frontend/Mywill.html');
                     const hash = JSON.parse(request.response);
                     console.log(hash[0].Hash);
