@@ -49,14 +49,10 @@
                                             <form method="post" id="requestRelease" enctype="multipart/form-data" action="https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease">
                                                 <div class="row g-3">
                                                     <div class="col-md-12">
-                                                       
-                                                        
                                                             <label for="file"  placeholder="IDProof">Executor ID<span>*</span></label><br>
-                                                            
                                                             <input name="IdExecutor" id="IdExecutor" class="form-control" accept="image/jpg, image/jpeg, image/png" type="file" data-max-size="300" required></input>
                                                             <code>Images types accepted: .jpg, .jpeg, .png,  max-size="300kb"</code>
                                                             <p id="file-result"></p>
-                                                       
                                                     </div>
                                                 </div>
                                                 <br>
@@ -92,11 +88,10 @@
                                                     let fileSubmit = document.getElementById("requestReleaseb");
                                                     let fileInput1 = document.getElementById("CertificatedDeath");
                                                       let fileResult1 = document.getElementById("file-result1");
-                                                
                                                     fileInput.addEventListener("change", function () {
                                                         if (fileInput.files.length > 0) {
                                                             const fileSize = fileInput.files.item(0).size;
-                                                            const fileKb = (fileSize / 1024)+ 0.7 ;
+                                                            const fileKb = (fileSize / 1024);
                                                             if (fileKb >= 300) {
                                                             fileResult.innerHTML = "Please select an Image less than 300KB.";
                                                             fileSubmit.disabled = true;
@@ -114,11 +109,8 @@
                                                             const fileSize = fileInput1.files.item(0).size;
                                                             const fileKb = fileSize / 1024 ;
                                                             if (fileKb >= 300) {
-                                                              
                                                             fileResult1.innerHTML= "Please select an Image less than 300KB.";
                                                             fileSubmit.disabled = true;
-                                                            
-                                                        
                                                             } else {
                                                             fileResult1.innerHTML =  "A "+ fileKb.toFixed(1)+ "KB. "+"Image is ready to uploaded.";
                                                             fileSubmit.disabled = false; 
@@ -162,7 +154,6 @@
                                         );
             
                                      </script>   
-                                    
                                 </div>
                             </div>
                         </div>
