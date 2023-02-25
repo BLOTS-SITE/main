@@ -145,10 +145,10 @@
                         console.log(request.response);
                         console.log(request.responseText);
                         console.log("1");
-                        if (request.status === 200) {
+                        if (request.status == 200) {
                             document.getElementById("container").innerHTML = request.responseText;
                             event.target.reset();
-                        } else if (request.status === 400) {
+                        } else if (request.status == 400) {
                             document.getElementById("container").innerHTML = request.responseText;
                             event.target.reset();
                         } else {
