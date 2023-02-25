@@ -106,11 +106,15 @@
                         <div class="col-12 text-center">
                             <input class="btn btn-primary w-100 py-3" type="submit" id="getreqinfo" value="View Request Info" />
                         </div>
-                        <div class="col-12 text-center">
-                            <a class="btn btn-primary py-3 px-5 mt-5" href="" id="disppdf">Download the details</a>
+                        
+                        <div class="col-12 text-center mt-5">
+                            <img src="" class="img-fluid" id="image1" hidden>
                         </div>
                         <div class="col-12 text-center mt-5">
-                            <img src="https://blots-site.github.io/main/img/logo.png" id="image1">
+                            <img src="" class="img-fluid" id="image2" hidden>
+                        </div>
+                        <div class="col-12 text-center">
+                            <a class="btn btn-primary py-3 px-5 mt-5" href="" id="preq" hidden>Process the Request</a>
                         </div>
                         <div class="col-12 text-center">
                             <div id="output" class="text-danger mt-3"></div>
@@ -258,14 +262,31 @@
                     dcbase64t = array[1]
                     lenghDcbase64 = dcbase64t.length
                     dcbase64t = dcbase64t.substring(0,lenghDcbase64-3)
+
+                    const exbase64= JSON.stringify(reqdata[0].IdExecutorP);
+                    array1 = exbase64.split('b\'');
+                    exbase64t = array1[1];
+                    lenghexbase64 = exbase64t.length
+                    exbase64t = exbase64t.substring(0,lenghDcbase64-3)
+                    // Name of the files
                     const dcname= reqdata[0].DeathCertificateN;
-                    const exbase64= reqdata[0].IdExecutorP;
                     const exname= reqdata[0].IdExecutorN;
+
                     const byteCharacters = atob(dcbase64t);
+                    const byteCharacters1 = atob(exbase64t);
+
                     const byteArrays = [];
+                    const byteArrays1 = [];
+
                     imaged = "data:image/*;base64," + dcbase64t;
+                    imageEx = "data:image/*;base64," + exbase64t;
                     console.log(imaged)
+                    console.log(imageEx)
+                    document.getElementById("image1").hidden=false;
+                    document.getElementById("image2").hidden=false;
+                    document.getElementById("preq").hidden=false;
                     document.getElementById("image1").src = imaged;
+                    document.getElementById("image2").src = imageEx;
 
                     sliceSize=512
 
@@ -281,18 +302,57 @@
                         byteArrays.push(byteArray);
                     }
 
+                    for (let offset = 0; offset < byteCharacters1.length; offset += sliceSize) {
+                        const slice1 = byteCharacters1.slice(offset, offset + sliceSize);
+
+                        const byteNumbers1 = new Array(slice1.length);
+                        for (let i = 0; i < slice1.length; i++) {
+                        byteNumbers1[i] = slice1.charCodeAt(i);
+                        }
+
+                        const byteArray1 = new Uint8Array(byteNumbers1);
+                        byteArrays1.push(byteArray1);
+                    }
+
                     var blob = new Blob(byteArrays, {type: "octet/stream"}),
-                            url = window.URL.createObjectURL(blob);
-                            a.href = url;
-                            a.download = dcname;
-                            a.click();
-                            window.URL.revokeObjectURL(url);
+                    url = window.URL.createObjectURL(blob);
+                    a.href = url;
+                    a.download = dcname;
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+
+                    var blob1 = new Blob(byteArrays1, {type: "octet/stream"}),
+                    url1 = window.URL.createObjectURL(blob1);
+                    a.href = url1;
+                    a.download = exname;
+                    a.click();
+                    window.URL.revokeObjectURL(url1);
                 }
             };
             request.send(JSON.stringify({ idRequest: reqid }));
             event.preventDefault();
         }, false);
-
+        const logoutbtnclick = document.getElementById("adminlogout");
+        logoutbtnclick.addEventListener("click", (event)=>{
+            const request = new XMLHttpRequest();            
+            request.open("GET", "https://pristine-dahlia-377509.ey.r.appspot.com/logout", true);
+            request.withCredentials=true;
+            request.onreadystatechange = () => {
+                console.log(request.response);
+                if (request.status === 200) {
+                    const cookies = document.cookie.split(";");
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i];
+                        const eqPos = cookie.indexOf("=");
+                        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    }
+                    window.location.assign('https://blots-site.github.io/main/Frontend/UserLogin.html');
+                    }
+            };
+            request.send();
+            event.preventDefault();
+        });
     
     </script>
 </body>
