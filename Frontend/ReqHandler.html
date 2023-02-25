@@ -86,20 +86,53 @@
                 <input id="viewreq" class="btn btn-primary w-5 py-2 border-0 text-center m-5" onclick="getRequests()"
                     value="Get All Pending Requests" />
             </div>
+            <div class="row justify-content-center  px-5">
+                <div class="col-auto">
+                  <div class="table table-responsive text-center" id="reqtable">
+                    <table>
+                        <tr>
+                          <th>Company</th>
+                          <th>Contact</th>
+                        </tr>
+                        <tr>
+                          <td>Alfreds Futterkiste</td>
+                          <td>Maria Anders</td>
+                        </tr>
+                        <tr>
+                          <td>Centro comercial Moctezuma</td>
+                          <td>Francisco Chang</td>  
+                        </tr>
+                      </table>
+                  </div>
+                </div>
+              </div>
         </div>
     </div>
-    <div class="row justify-content-center text-center py-10 m-5" id="reqtable">
-    </div>
-
-    <div class="bg-white border rounded p-4  p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
-        <div class="form-outline mb-4">
-            <input type="text" id="reqidnum" placeholder="Type any of the above mentioned Request IDs"
-                class="form-control" required />
+   
+    <div class="container-fluid callback my-5 pt-5">
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="form-outline mb-4">
+                            <input type="text" id="reqidnum" placeholder="Type any of the above mentioned Request IDs" class="form-control" required />
+                        </div>
+                        <div class="col-12 text-center">
+                            <input class="btn btn-primary w-100 py-3" type="submit" id="getreqinfo" value="View Request Info" />
+                        </div>
+                        <div class="col-12 text-center">
+                            <a class="btn btn-primary py-3 px-5 mt-5" href="" id="disppdf">Download the details</a>
+                        </div>
+                        <div class="col-12 text-center mt-5">
+                            <img src="https://blots-site.github.io/main/img/logo.png" id="image1">
+                        </div>
+                        <div class="col-12 text-center">
+                            <div id="output" class="text-danger mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-12 text-center">
-            <input class="btn btn-primary w-100 py-3" type="submit" id="getreqinfo" value="View Request Info" />
-        </div>
-
     </div>
 
     <!-- Requests End -->
@@ -154,6 +187,7 @@
         </div>
     </div>
     <!-- Copyright End -->
+
 
 
     <!-- Back to Top -->
@@ -229,20 +263,51 @@
             request.withCredentials = true;
             request.setRequestHeader("content-type", "application/json");
             request.onreadystatechange = () => {
+                var a = document.createElement("a");
                 if (request.readyState == 4 && request.status === 200) {
                     let reqdata = JSON.parse(request.response)
-                    const dcbase64= [reqdata[0].DeathCertificate];
+                    var dcbase64= JSON.stringify([reqdata[0].DeathCertificate]); // If you do not stringify the variable becomes and object
+                    //Taking the 'b' label and extra ' nd "
+                    array = dcbase64.split('b\'');
+                    dcbase64t = array[1]
+                    lenghDcbase64 = dcbase64t.length
+                    dcbase64t = dcbase64t.substring(0,lenghDcbase64-3)
                     const dcname= reqdata[0].DeathCertificateN;
                     const exbase64= reqdata[0].IdExecutorP;
                     const exname= reqdata[0].IdExecutorN;
-                    decoded_file = atob(dcbase64);
-                    blob = new Blob([decoded_file], {type: 'image/png'});
+                    const byteCharacters = atob(dcbase64t);
+                    const byteArrays = [];
+                    imaged = "data:image/*;base64," + dcbase64t;
+                    console.log(imaged)
+                    document.getElementById("image1").src = imaged;
+
+                    sliceSize=512
+
+                    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                        const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                        const byteNumbers = new Array(slice.length);
+                        for (let i = 0; i < slice.length; i++) {
+                        byteNumbers[i] = slice.charCodeAt(i);
+                        }
+
+                        const byteArray = new Uint8Array(byteNumbers);
+                        byteArrays.push(byteArray);
+                    }
+
+                    var blob = new Blob(byteArrays, {type: "octet/stream"}),
+                            url = window.URL.createObjectURL(blob);
+                            a.href = url;
+                            a.download = dcname;
+                            a.click();
+                            window.URL.revokeObjectURL(url);
                 }
             };
             request.send(JSON.stringify({ idRequest: reqid }));
             event.preventDefault();
         }, false);
 
+    
     </script>
 </body>
 
