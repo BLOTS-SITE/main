@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                  <div class="form-outline">
-                                     <input type="text" id="dateOfBirth" name="placeOfBirth" name="placeOfBirth" placeholder="Your Place of Birth"
+                                     <input type="text" id="placeOfBirth" name="placeOfBirth" placeholder="Your Place of Birth"
                                          class="form-control" required />
                                  </div>
                              </div>
@@ -125,6 +125,9 @@
                                     <input class="btn btn-primary w-100 py-3" id="regbutton" type="submit" value="Register" />
                                 </div>
                                 <div class="col-12 text-center">
+                                    <div id="output" class="text-danger mt-3"></div>
+                                </div>
+                                <div class="col-12 text-center">
                                     <br><br>
                                     Already a Member? <a class="text-decoration-none" href="https://blots-site.github.io/main/Frontend/UserLogin.html">Login Here!</a>
                                 </div>
@@ -162,17 +165,13 @@
                const request = new XMLHttpRequest();
                request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/sign-up", true);
                request.onreadystatechange = () => {
-                  console.log("0");
-                     console.log(request.response);
-                     console.log(request.responseText);
-                     console.log("1");
+                    console.log(request.response);
                      if (request.status === 200) {
-                        alert("User Registration started! Check your email and confirm your Email Address")
-                     
-                  } else if (request.status === 400){
-                     alert("Something Went Wrong! Invalid Input Data!")
-                  } else {
-                     alert("Server Internal Error! Not able to sign you up. Please come back later!")
+                        document.getElementById("output").innerHTML ="User Registration started! Check your email and confirm your Email Address";
+                  } else if (request.readyState == 4 && request.status === 400){
+                    document.getElementById("output").innerHTML ="Something Went Wrong! Invalid Input Data!";
+                  } else if(request.readyState == 4 && request.status === 500){
+                    document.getElementById("output").innerHTML ="Server Internal Error! Not able to sign you up. Please come back later!";
                   }
                };
 
