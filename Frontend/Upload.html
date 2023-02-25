@@ -138,20 +138,20 @@
                     const formData = new FormData(form);
                     const request = new XMLHttpRequest();
                     request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/updateTestament", true);
-                    request.withCredentials = true;
                     request.onreadystatechange = () => {
                         console.log("0");
                         console.log(request.response);
                         console.log(request.responseText);
                         console.log("1");
                         if (request.status === 200) {
-                            document.getElementById("container").innerHTML = "hahaha~"
-                            alert("Upload successful! Press Yes back to Home page.")
-                            window.location.href = "https://blots-site.github.io/main/Frontend/Home.html"
+                            document.getElementById("container").innerHTML = request.responseText;
+                            event.target.reset();
                         } else if (request.status === 400) {
-                            alert("Something Went Wrong! Please check Email and Phone number.")
+                            document.getElementById("container").innerHTML = request.responseText;
+                            event.target.reset();
                         } else {
-                            alert("Server Internal Error! Please come back later!")
+                            document.getElementById("container").innerHTML = request.responseText;
+                            event.target.reset();
                         }
 
                     };
