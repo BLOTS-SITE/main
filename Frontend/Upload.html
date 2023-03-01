@@ -147,12 +147,15 @@
                         console.log("1");
                         if (request.status == 200) {
                             document.getElementById("container").innerHTML = request.responseText;
+                            document.getElementById("container").style.color = "green";
                             event.target.reset();
                         } else if (request.status == 400) {
                             document.getElementById("container").innerHTML = request.responseText;
+                            document.getElementById("container").style.color = "red";
                             event.target.reset();
                         } else {
                             document.getElementById("container").innerHTML = request.responseText;
+                            document.getElementById("container").style.color = "red";
                             event.target.reset();
                         }
 
