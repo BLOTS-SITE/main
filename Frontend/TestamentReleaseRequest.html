@@ -271,19 +271,23 @@
                                           console.log("1");
                                           if(request.status == 200){
                                               //alert("Your Request is send")
+                                             
                                               document.getElementById("demo").innerHTML = request.responseText;
                                               document.getElementById("demo").style.color="green";
                                               event.target.reset();
                                              
+                                             
                                                }
                                                else if (request.status == 400){
-                                                 
+                                                
                                                   document.getElementById("demo").innerHTML = request.responseText;
                                                   document.getElementById("demo").style.color="red";
+                                               
                                                   
                                                }else{
                                                   document.getElementById("demo").innerHTML = request.responseText;
                                                   document.getElementById("demo").style.color="red";
+                                               
                                                   
                                                }
                                           };
