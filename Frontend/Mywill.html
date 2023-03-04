@@ -139,6 +139,7 @@
                         <div class="row g-3">
                             <div class="col-12">
                                 <input class="btn btn-primary py-3 px-5" id="getwill" type="submit" value="Get Will"/>
+                                <a class="btn btn-primary py-3 px-5" href="" id="EthereumId" >Ethereum Transaction</a>
                                 <a class="btn btn-primary py-3 px-5" href="" id="disppdf" hidden>Download Will</a>
                                 <p class="alert alert-info mt-5" id="resp" hidden></p>
                             </div>
@@ -226,7 +227,9 @@
         let dtb = cookiesplit[6];
         let postadd = cookiesplit[7];
         let idnumb = cookiesplit[2];
-        console.log(lastName);
+        let urlE = "https://goerli.etherscan.io/tx/" + hashcode
+        document.getElementById('EthereumId').setAttribute('href', urlE);
+        
 
         document.getElementById("FullName").innerHTML = firstName+" "+lastName;
         document.getElementById("dob").innerHTML = dtb;
@@ -234,10 +237,6 @@
         document.getElementById("remail").innerHTML = regemail;
         document.getElementById("phnnum").innerHTML = phnnumber;
         document.getElementById("paddr").innerHTML = postadd;
-
-        console.log(decodedCookie)
-
-        console.log(JSON.stringify({hashNumber:hashcode}))
 
         const viewwill = document.getElementById("getwill");
         viewwill.addEventListener("click", (event)=>{
