@@ -94,42 +94,62 @@
             <div class="col-lg-7">
                 <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
                     
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="form-outline">
-                                <input type="text" class="form-control" id="idRequest" name="idRequest" placeholder="Enter the Request number"
-                                    required readonly>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-outline">
+                                    <input type="text" class="form-control" id="idRequest" name="idRequest" placeholder="Enter the Request number"
+                                        required readonly>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-outline">
+                                    <input type="text" class="form-control" id="idExecutor" name="idExecutor" placeholder="Enter the Executer ID number"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-outline">
+                                    <input type="text" id="idTestator" name="idTestator" placeholder="Enter the Testator ID number"
+                                        class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-outline">
+                                    <textarea type="text" id="comments"  name="comments" placeholder="Enter your Comments"
+                                        class="form-control" required></textarea>
+                                        <code>Type N/A in case of No Comments</code>
+                                </div>
+                            </div>
+                            <div class="col-6 text-center">
+                                <input class="btn btn-primary w-100 py-3" id="appbutton" value="APPROVED" />
+                            </div>
+                            <div class="col-6 text-center">
+                                <input class="btn btn-primary w-100 py-3" id="decbutton" value="DECLINED" />
+                            </div>
+                            <div class="col-12 text-center">
+                                <div id="output" class="text-danger mt-3"></div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-outline">
-                                <input type="text" class="form-control" id="idExecutor" name="idExecutor" placeholder="Enter the Executer ID number"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-outline">
-                                <input type="text" id="idTestator" name="idTestator" placeholder="Enter the Testator ID number"
-                                    class="form-control" required />
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-outline">
-                                <textarea type="text" id="comments"  name="comments" placeholder="Enter your Comments"
-                                    class="form-control" required></textarea>
-                                    <code>Type N/A in case of No Comments</code>
-                            </div>
-                        </div>
-                        <div class="col-6 text-center">
-                            <input class="btn btn-primary w-100 py-3" id="appbutton" value="APPROVED" />
-                        </div>
-                        <div class="col-6 text-center">
-                            <input class="btn btn-primary w-100 py-3" id="decbutton" value="DECLINED" />
-                        </div>
-                        <div class="col-12 text-center">
-                            <div id="output" class="text-danger mt-3"></div>
-                        </div>
-                    </div>
+                    
+                </div>
+                <br>
+                <br>
+
+                <div class=" justify-content-center wow fadeInUp" data-wow-delay="0.5s">
+                    <table width="100%" height="100%" align="center">
+                                
+                        <tr>
+                          <td align="center"><img id= "image1" src=""  width="300" height="350" hidden></td>
+                          <td align="center"><img id= "image2" src="" width="300" height="350" hidden></td>
+                        </tr>
+
+                        <tr>
+                            <td align="center"><a class="btn btn-primary py-3 px-5" href="" id="img1" hidden>Download</a></td>
+                            <td align="center"><a class="btn btn-primary py-3 px-5" href="" id="img2" hidden>Download</a></td>
+                          </tr>
+                      
+                      </table>
+                      
                 </div>
             </div>
         </div>
@@ -212,6 +232,111 @@
         const urlParams = new URLSearchParams(queryString);
         const idR = urlParams.get('idR')
         document.getElementById('idRequest').value = idR;
+
+        window.onload = function() {
+
+            const request = new XMLHttpRequest();
+            request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/getRequestInfo", true);
+            request.withCredentials = true;
+            request.setRequestHeader("content-type", "application/json");
+            request.onreadystatechange = () => {
+                var a = document.createElement("a");
+                var b = document.createElement("a");
+                if (request.readyState == 4 && request.status === 200) {
+                    let reqdata = JSON.parse(request.response)
+                    var dcbase64= JSON.stringify([reqdata[0].DeathCertificate]); 
+                    array = dcbase64.split('b\'');
+                    dcbase64t = array[1]
+                    lenghDcbase64 = dcbase64t.length
+                    dcbase64t = dcbase64t.substring(0,lenghDcbase64-3)
+
+                    console.log(dcbase64t)
+                    const exbase64= JSON.stringify(reqdata[0].IdExecutorP);
+                    array1 = exbase64.split('b\'');
+                    exbase64t = array1[1];
+                    lenghexbase64 = exbase64t.length
+                    exbase64t = exbase64t.substring(0,lenghexbase64-3)
+                    console.log(exbase64t)
+
+                    // Name of the files
+                    const dcname= reqdata[0].DeathCertificateN;
+                    const exname= reqdata[0].IdExecutorN;
+
+                    const byteCharacters = atob(dcbase64t);
+                    const byteCharacters1 = atob(exbase64t);
+
+                    const byteArrays = [];
+                    const byteArrays1 = [];
+
+                    imaged = "data:image/*;base64," + dcbase64t;
+                    imageEx = "data:image/*;base64," + exbase64t;
+                    console.log(imaged)
+                    console.log(imageEx)
+                    document.getElementById("image1").hidden = false;
+                    document.getElementById("image2").hidden = false;
+                    document.getElementById("image1").src = imaged;
+                    document.getElementById("image2").src = imageEx;
+
+
+                    sliceSize=512
+
+                    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                        const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                        const byteNumbers = new Array(slice.length);
+                        for (let i = 0; i < slice.length; i++) {
+                        byteNumbers[i] = slice.charCodeAt(i);
+                        }
+
+                        const byteArray = new Uint8Array(byteNumbers);
+                        byteArrays.push(byteArray);
+                    }
+
+                    for (let offset = 0; offset < byteCharacters1.length; offset += sliceSize) {
+                        const slice1 = byteCharacters1.slice(offset, offset + sliceSize);
+
+                        const byteNumbers1 = new Array(slice1.length);
+                        for (let i = 0; i < slice1.length; i++) {
+                        byteNumbers1[i] = slice1.charCodeAt(i);
+                        }
+
+                        const byteArray1 = new Uint8Array(byteNumbers1);
+                        byteArrays1.push(byteArray1);
+                    }
+
+                    var blob = new Blob(byteArrays, {type: "octet/stream"}),
+                    url = window.URL.createObjectURL(blob);
+                    a.href = url;
+                    a.download = dcname;
+                    document.getElementById("img1").hidden = false;
+                    document.getElementById("img1").href = url;
+                    document.getElementById("img1").download = dcname;
+                    //window.URL.revokeObjectURL(url);
+                    //a.click();
+                    
+
+                    var blob1 = new Blob(byteArrays1, {type: "octet/stream"}),
+                    url1 = window.URL.createObjectURL(blob1);
+                    b.href = url1;
+                    b.download = exname;
+                    b.hidden = false;
+                    document.getElementById("img2").hidden = false;
+                    document.getElementById("img2").href = url1;
+                    document.getElementById("img2").download = dcname;
+                    //b.click();
+                    //window.URL.revokeObjectURL(url1);
+                }
+            };
+            request.send(JSON.stringify({ idRequest: idR }));
+            event.preventDefault();
+        
+
+        }
+
+
+
+
+
         ApBtn.addEventListener(
             "click",
             (event)=>{
@@ -226,9 +351,11 @@
                 request.setRequestHeader("content-type","application/json");
                 request.onreadystatechange = () => {
                      if (request.readyState == 4 && request.status === 200) {
-                        document.getElementById("output").innerHTML ="The request has been aproved!";
-                     } else if (request.readyState == 4 && request.status === 500) {
-                        document.getElementById("output").innerHTML ="There is a problem processing the request. Please try again later!";
+                        document.getElementById("output").innerHTML = request.responseText;
+                        document.getElementById("container").style.color = "green";
+                     } else if (request.readyState == 4) {
+                        document.getElementById("output").innerHTML = request.responseText;
+                        document.getElementById("container").style.color = "red";
                      }
                 };
                 request.send(JSON.stringify({idRequest:idRequest,status:status,idExecutor:idExecutor,idTestator:idTestator,comments:comments}));

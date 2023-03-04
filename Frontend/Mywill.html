@@ -253,9 +253,9 @@
                     a.href =url;
                     a.hidden=false;
                   } else if (request.response === 400){
-                    msg.innerHTML= "No Uploaded Will Found!";
+                    msg.innerHTML = request.responseText;
                   } else if(request.response === 500){
-                    msg.innerHTML= "Internal Server Error! Connect with Blots Admin!";
+                    msg.innerHTML = request.responseText;
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
