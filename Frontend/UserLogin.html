@@ -110,7 +110,7 @@
                         
                         const data = JSON.parse(request.response);
                         console.log(data);
-                        var nameCookie = "Name=" + data[0].FirstName+"="+data[0].Id+"="+data[0].LastName+"="+data[0].email+"="+data[0].PhoneNumber+"="+data[0].DateBirth+"="+data[0].PostalAddress;
+                        var nameCookie = "Name=" + data[0].FirstName+"="+data[0].Id+"="+data[0].LastName+"="+data[0].email+"="+data[0].PhoneNumber+"="+data[0].DateBirth+"="+data[0].PostalAddress+"=";
                         document.cookie = nameCookie;
                         console.log("Your Cookie : " + document.cookie);
                         if (data[0].Role === "USER"){
