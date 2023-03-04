@@ -152,11 +152,9 @@
                         } else if (request.status == 400) {
                             document.getElementById("container").innerHTML = request.responseText;
                             document.getElementById("container").style.color = "red";
-                            event.target.reset();
                         } else {
                             document.getElementById("container").innerHTML = request.responseText;
                             document.getElementById("container").style.color = "red";
-                            event.target.reset();
                         }
 
                     };
@@ -183,7 +181,8 @@
                 if (size > 2048 * 1024) {
                     msg = `<span style="color:red;">The allowed file size is 2MB. The file you are trying to upload is of ${returnFileSize(size)}</span>`;
                 } else {
-                    msg = `<span style="color:green;"> A ${returnFileSize(size)} file has been uploaded successfully.</span>`;
+                    //msg = `<span style="color:green;"> A ${returnFileSize(size)} file has been uploaded successfully.</span>`;
+                    msg = ''
                 }
                 feedback.innerHTML = msg;
             });
