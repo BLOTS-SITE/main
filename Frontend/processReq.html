@@ -207,6 +207,7 @@
     <!-- Template Javascript -->
     <script src="https://blots-site.github.io/main/js/main.js"></script>
     <script>
+        const queryString = window.location.search;
         const ApBtn = document.getElementById("appbutton")
         const urlParams = new URLSearchParams(queryString);
         const idR = urlParams.get('idR')
