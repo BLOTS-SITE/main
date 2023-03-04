@@ -36,7 +36,8 @@
 
 <body>
     <div class="container-fluid callback my-5 pt-5" id="contact-wrapper">
-        <!-- Sample HTML Form -->
+        
+        <!-- Registration Form Start-->
         <form name="Regform" enctype="multipart/form-data" method="post">
             <div class="container pt-5">
                 <div class="row justify-content-center">
@@ -44,10 +45,12 @@
                         <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
                                 style="max-width: 600px;">
-                                <p class="d-inline-block border rounded text-primary fw-bold py-1 px-3">Be a BloTS
+                                <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Be a BloTS
                                     member! Register with us!</p>
+                                    
 
-                            </div><br><br>
+                            </div>
+                          
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="form-outline">
@@ -82,6 +85,14 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <input type="text" id="countryPhone" name="countryPhone" placeholder="Country Code" class="form-control"
+                                            required />
+                                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="form-control"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
                                     <div class="form-outline">
                                         <input type="password" id="password1" name="password1" placeholder="Type your Password"
                                             class="form-control" required />
@@ -94,14 +105,7 @@
                                             class="form-control" required />
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <input type="text" id="countryPhone" name="countryPhone" placeholder="Country Code" class="form-control"
-                                            required />
-                                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="form-control"
-                                            required />
-                                    </div>
-                                </div>
+                               
                                 <div class="col-sm-6">
                                  <div class="form-outline">
                                      <input type="text" class="form-control" id="IdNumber" name="IdNumber" placeholder="Your ID Number"
@@ -137,7 +141,7 @@
                 </div>
             </div>
          </form>
-         
+         <!-- Registration Form End -->
          <!-- JavaScript Functions -->
          <script>
             let imageUpload = document.getElementById("file");
@@ -187,7 +191,21 @@
          </script>
          
     </div>
-    
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="border-bottom"> &copy; This website does not belong to a real company. It is a project for the master in  Web Engineering TU Chemnitz. 2022</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> & BloTS Team
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
 </body>
 
 </html>
