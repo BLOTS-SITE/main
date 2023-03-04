@@ -97,13 +97,13 @@
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <div class="form-outline">
-                                    <input type="text" class="form-control" id="idRequest" name="idRequest" placeholder="Enter the Request number"
+                                    <input type="text" class="form-control" id="idRequest" name="idRequest" maxlength="10" placeholder="Enter the Request number"
                                         required readonly>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-outline">
-                                    <input type="text" class="form-control" id="idExecutor" name="idExecutor" placeholder="Enter the Executer ID number"
+                                    <input type="text" class="form-control" id="idExecutor" name="idExecutor"  maxlength="10" placeholder="Enter the Executer ID number"
                                         required>
                                 </div>
                             </div>
@@ -326,6 +326,11 @@
                     //b.click();
                     //window.URL.revokeObjectURL(url1);
                 }
+            
+                else if (request.readyState == 4) {
+                    document.getElementById("output").innerHTML = request.responseText;
+                    document.getElementById("container").style.color = "red";
+                 }
             };
             request.send(JSON.stringify({ idRequest: idR }));
             event.preventDefault();
@@ -379,10 +384,10 @@
                 request.onreadystatechange = () => {
                      if (request.readyState == 4 && request.status === 200) {
                         document.getElementById("output").innerHTML = request.responseText;
-                        document.getElementById("container").style.color = "green";
+                        document.getElementById("output").style.color = "green";
                      } else if (request.readyState == 4) {
                         document.getElementById("output").innerHTML = request.responseText;
-                        document.getElementById("container").style.color = "red";
+                        document.getElementById("output").style.color = "red";
                      }
                 };
                 request.send(JSON.stringify({idRequest:idRequest,status:status,idExecutor:idExecutor,idTestator:idTestator,comments:comments}));

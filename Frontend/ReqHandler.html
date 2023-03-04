@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 700px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+    .styled-table thead tr {
+    background-color: #355EFC;
+    color: #ffffff;
+    text-align: center;
+    }
 
+    .styled-table th,
+    .styled-table td {
+    padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #355EFC;
+    }
+
+    .styled-table tbody tr.active-row {
+    font-weight: bold;
+    color:  #355EFC;
+}
+
+</style>
 <head>
     <meta charset="utf-8">
     <title>BloTS - Admin Page</title>
@@ -212,11 +249,12 @@
 
                     // Create a table.
                     const table = document.createElement("table");
-
+                    table.className = "styled-table";
+    
                     // Create table header row using the extracted headers above.
                     let tr = table.insertRow(-1);                   
 
-                    for (let i = 0; i < col.length; i++) {
+                    for (let i = 2; i < col.length; i++) {
                         let th = document.createElement("th");      
                         th.innerHTML = col[i];
                         tr.appendChild(th);
@@ -232,6 +270,17 @@
                             tabCell.innerHTML = reqlist[i][col[j]];
                         }
                     }
+
+                    // Create an empty <thead> element and add it to the table:
+                    var header = table.createTHead();
+                    let trH = header.insertRow(0); 
+
+                    for (let i = 0; i < 2; i++) {
+                        let th = document.createElement("th");      
+                        th.innerHTML = col[i];
+                        trH.appendChild(th);
+                    }
+
 
                     // Now, add the newly created table with json data, to a container.
                     const divShowData = document.getElementById('reqtable');
