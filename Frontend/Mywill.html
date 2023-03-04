@@ -235,6 +235,8 @@
         document.getElementById("phnnum").innerHTML = phnnumber;
         document.getElementById("paddr").innerHTML = postadd;
 
+        console.log(JSON.stringify({hashNumber:hashcode}))
+
         const viewwill = document.getElementById("getwill");
         viewwill.addEventListener("click", (event)=>{
             const request = new XMLHttpRequest();
