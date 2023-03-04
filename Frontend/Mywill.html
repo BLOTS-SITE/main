@@ -88,34 +88,34 @@
                       
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <label for="FullName">Name:</label>
-                                <p id="FullName">Dipshikha Ghosh</p>
+                                <label for="FullName" class="fw-bold">Name:</label>
+                                <p id="FullName"></p>
                             </div>
                             <div class="col-sm-6">
-                                <label for="FullName">Date of Birth:</label>
-                                <p id="FullName">1995-01-01</p>
+                                <label for="dob" class="fw-bold">Date of Birth:</label>
+                                <p id="dob"></p>
                             </div>
                                 <div class="col-sm-6">
-                                    <label for="FullName">ID Number:</label>
-                                    <p id="FullName">699132</p>
+                                    <label for="idnum" class="fw-bold">ID Number:</label>
+                                    <p id="idnum"></p>
                                 </div>
                       
                           
                                 <div class="col-sm-6">
-                                    <label for="FullName">Registered Email Address:</label>
-                                    <p id="FullName">dip@gmail.com</p>
+                                    <label for="remail" class="fw-bold">Registered Email Address:</label>
+                                    <p id="remail"></p>
                                 </div>
                          
                            
                                 <div class="col-sm-6">
-                                    <label for="FullName">Registered Phone Number:</label>
-                                    <p id="FullName">1773881185</p>
+                                    <label for="phnnum" class="fw-bold">Registered Phone Number:</label>
+                                    <p id="phnnum"></p>
                                 </div>
                         
                            
                                 <div class="col-sm-6">
-                                    <label for="FullName">Postal Address:</label>
-                                    <p id="FullName">Berlin</p>
+                                    <label for="paddr" class="fw-bold">Postal Address:</label>
+                                    <p id="paddr"></p>
                                 </div>
                            
                             
@@ -211,8 +211,21 @@
         let decodedCookie = decodeURIComponent(document.cookie);
         const cookiesplit = decodedCookie.split("=");
         let hashcode = cookiesplit[8];
+        let firstName = cookiesplit[1];
         let lastName = cookiesplit[3];
+        let regemail = cookiesplit[4];
+        let phnnumber = cookiesplit[5];
+        let dtb = cookiesplit[6];
+        let postadd = cookiesplit[7];
+        let idnumb = cookiesplit[2];
         console.log(lastName);
+
+        document.getElementById("FullName").innerHTML = firstName+" "+lastName;
+        document.getElementById("dob").innerHTML = dtb;
+        document.getElementById("idnum").innerHTML = idnumb;
+        document.getElementById("remail").innerHTML = regemail;
+        document.getElementById("phnnum").innerHTML = phnnumber;
+        document.getElementById("paddr").innerHTML = postadd;
 
         const viewwill = document.getElementById("getwill");
         viewwill.addEventListener("click", (event)=>{
