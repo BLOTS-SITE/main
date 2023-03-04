@@ -210,7 +210,7 @@
         const ApBtn = document.getElementById("appbutton")
         const urlParams = new URLSearchParams(queryString);
         const idR = urlParams.get('idR')
-        document.getElementById('idRequest').setAttribute('value', idR);
+        document.getElementById('idRequest').value = idR;
         ApBtn.addEventListener(
             "click",
             (event)=>{
