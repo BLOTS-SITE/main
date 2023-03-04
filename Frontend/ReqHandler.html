@@ -272,11 +272,13 @@
                     lenghDcbase64 = dcbase64t.length
                     dcbase64t = dcbase64t.substring(0,lenghDcbase64-3)
 
+                    console.log(dcbase64t)
                     const exbase64= JSON.stringify(reqdata[0].IdExecutorP);
                     array1 = exbase64.split('b\'');
                     exbase64t = array1[1];
                     lenghexbase64 = exbase64t.length
                     exbase64t = exbase64t.substring(0,lenghexbase64-3)
+                    console.log(exbase64t)
 
                     // Name of the files
                     const dcname= reqdata[0].DeathCertificateN;
