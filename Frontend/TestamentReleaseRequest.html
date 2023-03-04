@@ -31,22 +31,20 @@
     <!-- Template Stylesheet -->
     <link href="https://blots-site.github.io/main/css/style.css" rel="stylesheet">
 </head>
-
-
 <body>
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
     </div>
     <!-- Spinner End -->
-
 
     <!-- Navbar Start -->
     <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
             <div class="col-lg-6 px-5 text-start">
                 <small><i class="fa fa-map-marker-alt text-primary me-2"></i>Veterstraße 72, Chemnitz, Germany</small>
-                
+
             </div>
             <div class="col-lg-6 px-5 text-end">
                 <small><i class="fa fa-envelope text-primary me-2"></i>blots-info@googlegroups.com</small>
@@ -56,228 +54,242 @@
 
         <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
             <a href="https://blots-site.github.io/main/index.html" class="navbar-brand ms-4 ms-lg-0">
-                <h1 class="display-5 text-primary m-0"><img class="rounded-circle mb-3" width="90px" src="https://blots-site.github.io/main/img/logo.png">BloTS</h1>
+                <h1 class="display-5 text-primary m-0"><img class="rounded-circle mb-3" width="90px"
+                        src="https://blots-site.github.io/main/img/logo.png">BloTS</h1>
             </a>
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
         </nav>
     </div>
     <!-- Navbar End -->
 
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <h3 class="display-3 mb-4 animated slideInDown">Testament Release Request</h3>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="https://blots-site.github.io/main/index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Testament Release Request</li>
+                </ol>
+            </nav>
 
-
- <!-- Page Header Start -->
- <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container">
-        <h3 class="display-3 mb-4 animated slideInDown">Testament Release Request</h3>
-        <nav aria-label="breadcrumb animated slideInDown">
-        <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="https://blots-site.github.io/main/index.html">Home</a></li>
-             <li class="breadcrumb-item active" aria-current="page">Testament Release Request</li>
-        </ol>
-    </nav>
-
+        </div>
     </div>
-</div>
 
-<!-- Page Header End -->
+    <!-- Page Header End -->
+
+
+  <!-- Release Request Form start -->
     <div class="container-fluid callback my-5 pt-5" id="contact-wrapper">
-        <!-- Sample HTML Form -->
-        <form method="post" id="requestRelease" enctype="multipart/form-data" >
+        <form method="post" id="requestRelease" enctype="multipart/form-data">
             <div class="container pt-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
                                 style="max-width: 600px;">
-                                <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Testament Release Request</p>
-                                          </div><br><br>
-                                            <p class="mb-4">Dear Executor,<br>Please attach the necessary documents, if you are the legal executor of the will.</p>
-                                            <form method="post" id="requestRelease" enctype="multipart/form-data" action="https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease">
-                                                <div class="row g-3">
-                                                    <div class="col-md-12">
-                                                            <label for="file"  placeholder="IDProof">Executor ID<span>*</span></label><br>
-                                                            <input name="IdExecutor" id="IdExecutor" class="form-control" accept="image/jpg, image/jpeg, image/png" type="file" data-max-size="300" required></input>
-                                                            <code>Images types accepted: .jpg, .jpeg, .png,  max-size="300kb"</code>
-                                                            <p id="file-result"></p>
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                    <div class="row g-3">
-                                                        <div class="col-md-12">
-                                                            <div class="form-floating"> </div>
-                                                                
-                                                                <!--size much be 300kb  all type of the imge-->
-                                                                <label for="CertificatedDeath" placeholder="CertificatedDeath" >Uploaded Testator Death Certificate<span>*</span></label><br>
-                                                               <input type="file"   data-max-size="300"    class="form-control" accept="image/jpg, image/jpeg, image/png" id="CertificatedDeath" name="CertificatedDeath" required></input>
-                                                               <code>Images types accepted: .jpg, .jpeg, .png,  max-size="300kb" </code>
-                                                               <p id="file-result1"></p>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                     <br>
-                                                               
-                                                    <div class="col-12 text-center">
-                                                        <button id="requestReleaseb"  class="btn btn-primary w-100 py-3" value="submit" type="submit">Send Request</button>
-                                                    </div><br>
-                                                    <div class="col-12 text-center">
-                                                        <p id="demo"></p>
-                                                    </div>
-                                                </div>                 
-                                               </form>
-                                        </div>
+                                <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Testament
+                                    Release Request</p>
+
+                            </div><br><br>
+
+                            <p class="mb-4">Dear Executor,<br>Please attach the necessary documents, if you are the
+                                legal executor of the will.</p>
+                            <form method="post" id="requestRelease" enctype="multipart/form-data"
+                                action="https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label for="file" placeholder="IDProof">Executor ID<span>*</span></label><br>
+                                        <input name="IdExecutor" id="IdExecutor" class="form-control"
+                                            accept="image/jpg, image/jpeg, image/png" type="file" data-max-size="300"
+                                            required></input>
+                                        <code>Images types accepted: .jpg, .jpeg, .png,  max-size="300kb"</code>
+                                        <p id="file-result"></p>
                                     </div>
-         
                                 </div>
-                            </div>
+                                <br>
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <div class="form-floating"> </div>
+
+                                        <!--size much be 300kb  all type of the imge-->
+                                        <label for="CertificatedDeath" placeholder="CertificatedDeath">Uploaded Testator
+                                            Death Certificate<span>*</span></label><br>
+                                        <input type="file" data-max-size="300" class="form-control"
+                                            accept="image/jpg, image/jpeg, image/png" id="CertificatedDeath"
+                                            name="CertificatedDeath" required></input>
+                                        <code>Images types accepted: .jpg, .jpeg, .png,  max-size="300kb" </code>
+                                        <p id="file-result1"></p>
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-12 text-center">
+                                    <button id="requestReleaseb" class="btn btn-primary w-100 py-3" value="submit"
+                                        type="submit">Send Request</button>
+                                </div><br>
+                                <div class="col-12 text-center">
+                                    <p id="demo"></p>
+                                </div>
                         </div>
+                   </form>
+               </div>
+            </div>
+         </div>
+    </div>
+  <!-- Release Request Form end -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Our Office</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Veterstraße 72, Chemnitz, Germany</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+49 15172191384</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>blots-info@googlegroups.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="#aboutus-wrapper">About Us</a>
+                    <a class="btn btn-link" href="#contact-wrapper">Contact Us</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Newsletter</h4>
+                    <form>
+                        <div class="position-relative w-100">
+                            <input class="form-control bg-white border-0 w-100 py-3 ps-4 pe-5" type="text"
+                                placeholder="Your email">
+                            <button type="submit"
+                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-         </form>
+        </div>
     </div>
-   <!-- Footer Start -->
-   <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-4">Our Office</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Veterstraße 72, Chemnitz, Germany</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+49 15172191384</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>blots-info@googlegroups.com</p>
-            </div>
+    <!-- Footer End -->
 
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-4">Quick Links</h4>
-                <a class="btn btn-link" href="#aboutus-wrapper">About Us</a>
-                <a class="btn btn-link" href="#contact-wrapper">Contact Us</a>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-4">Newsletter</h4>
-                <form>
-                    <div class="position-relative w-100">
-                        <input class="form-control bg-white border-0 w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Your email">
-                        <button type="submit"
-                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </form>
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="border-bottom"> &copy; This website does not belong to a real company. It is a project for
+                        the master in Web Engineering TU Chemnitz. 2022</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>& BloTS Team
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Footer End -->
+    <!-- Copyright End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://blots-site.github.io/main/lib/wow/wow.min.js"></script>
+    <script src="https://blots-site.github.io/main/lib/easing/easing.min.js"></script>
+    <script src="https://blots-site.github.io/main/lib/waypoints/waypoints.min.js"></script>
+    <script src="https://blots-site.github.io/main/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://blots-site.github.io/main/lib/counterup/counterup.min.js"></script>
 
-<!-- Copyright Start -->
-<div class="container-fluid copyright py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <p class="border-bottom"> &copy; This website does not belong to a real company. It is a project for
-                    the master in Web Engineering TU Chemnitz. 2022</p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> & BloTS Team
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Copyright End -->
-
-
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
-        class="bi bi-arrow-up"></i></a>
-
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://blots-site.github.io/main/lib/wow/wow.min.js"></script>
-<script src="https://blots-site.github.io/main/lib/easing/easing.min.js"></script>
-<script src="https://blots-site.github.io/main/lib/waypoints/waypoints.min.js"></script>
-<script src="https://blots-site.github.io/main/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="https://blots-site.github.io/main/lib/counterup/counterup.min.js"></script>
-
-<!-- Template Javascript -->
-<script src="https://blots-site.github.io/main/js/main.js"></script>
-                                    <!-- HTTPRequest Javascript -->
-                                    <script>
-                                              let fileInput = document.getElementById("IdExecutor");
-                                              let fileResult = document.getElementById("file-result");
-                                              let fileSubmit = document.getElementById("requestReleaseb");
-                                              let fileInput1 = document.getElementById("CertificatedDeath");
-                                              let fileResult1 = document.getElementById("file-result1");
-                                              fileInput.addEventListener("change", function () {
-                                                  if (fileInput.files.length > 0) {
-                                                      const fileSize = fileInput.files.item(0).size;
-                                                      const fileKb = (fileSize / 1024);
-                                                      if (fileKb >= 300) {
-                                                      fileResult.innerHTML = "Please select an Image less than 300KB.";
-                                                      fileResult.style.color="red";
-                                                      fileSubmit.disabled = true;
-                                                      fileInput.querySelector
-                                                      } else {
-                                                      fileResult.innerHTML =  "A "+ fileKb.toFixed(1)+ "KB. "+"Image is ready to uploaded.";
-                                                      fileResult.style.color="Green";
-                                                      fileSubmit.disabled = false; 
-                                                      
-                                                      }
-                                                  }
-                                                  });
-
-                                              fileInput1.addEventListener("change", function () {
-                                                  if (fileInput1.files.length > 0) {
-                                                      const fileSize = fileInput1.files.item(0).size;
-                                                      const fileKb = fileSize / 1024 ;
-                                                      if (fileKb >= 300) {
-                                                      fileResult1.innerHTML= "Please select an Image less than 300KB.";
-                                                      fileResult1.style.color="red";
-                                                      fileSubmit.disabled = true;
-                                                      } else {
-                                                      fileResult1.innerHTML =  "A "+ fileKb.toFixed(1)+ "KB. "+"Image is ready to uploaded.";
-                                                      fileResult1.style.color="Green";
-                                                      fileSubmit.disabled = false; 
-                                                      }
-                                                  }  
-                                                  });                   
-                                
-                                  const form= document.forms.namedItem("requestRelease");
-                                  form.addEventListener(
-                                      "submit",
-                                      (event) => {
-                                          const  formData= new FormData(form);
-                                          const request = new XMLHttpRequest();
-                                          request.open("Post","https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease", true);
-                                          request.onreadystatechange= ()=> {
-                                          console.log("0");
-                                          console.log(request.response);
-                                          console.log(request.responseText);
-                                          console.log("1");
-                                          if(request.status == 200){
-                                              document.getElementById("demo").innerHTML = request.responseText;
-                                              document.getElementById("demo").style.color="green";
-                                              event.target.reset();
-                                               }
-                                               else if (request.status == 400){
-                                                  document.getElementById("demo").innerHTML = request.responseText;
-                                                  document.getElementById("demo").style.color="red";
-                                               }else{
-                                                  document.getElementById("demo").innerHTML = request.responseText;
-                                                  document.getElementById("demo").style.color="red";
-                                               }
-                                          };
-                                          request.send(formData);
-                                          event.preventDefault();
-                                      },
-                                      false  
-                                  );
-                                </script>              
+    <!-- Template Javascript  control image< 300KB-->
     
+    <script src="https://blots-site.github.io/main/js/main.js"></script>
+    <script > 
+        let fileInput = document.getElementById("IdExecutor");
+        let fileResult = document.getElementById("file-result");
+        let fileSubmit = document.getElementById("requestReleaseb");
+        let fileInput1 = document.getElementById("CertificatedDeath");
+        let fileResult1 = document.getElementById("file-result1");
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                const fileSize = fileInput.files.item(0).size;
+                const fileKb = (fileSize / 1024);
+                if (fileKb >= 300) {
+                    fileResult.innerHTML = "Please select an Image less than 300KB.";
+                    fileResult.style.color = "red";
+                    fileSubmit.disabled = true;
+
+                } else {
+                    fileResult.innerHTML = "A " + fileKb.toFixed(1) + "KB. " + "Image is ready to uploaded.";
+                    fileResult.style.color = "Green";
+                    fileSubmit.disabled = false;
+                }
+            }
+        });
+
+        fileInput1.addEventListener("change", function () {
+            if (fileInput1.files.length > 0) {
+                const fileSize = fileInput1.files.item(0).size;
+                const fileKb = fileSize / 1024;
+                if (fileKb >= 300) {
+                    fileResult1.innerHTML = "Please select an Image less than 300KB.";
+                    fileResult1.style.color = "red";
+                    fileSubmit.disabled = true;
+                } else {
+                    fileResult1.innerHTML = "A " + fileKb.toFixed(1) + "KB. " + "Image is ready to uploaded.";
+                    fileResult1.style.color = "Green";
+                    fileSubmit.disabled = false;
+                }
+            }
+
+        });
+
+         // Test XMLHttpReques
+        const form = document.forms.namedItem("requestRelease");
+        form.addEventListener(
+            "submit",
+            (event) => {
+
+                const formData = new FormData(form);
+                const request = new XMLHttpRequest();
+                request.open("Post", "https://pristine-dahlia-377509.ey.r.appspot.com/requestRelease", true);
+                request.onreadystatechange = () => {
+                    console.log("0");
+                    console.log(request.response);
+                    console.log(request.responseText);
+                    console.log("1");
+                    if (request.status == 200) {
+
+                        document.getElementById("demo").innerHTML = request.responseText;
+                        document.getElementById("demo").style.color = "green";
+
+                        fileResult.innerHTML = " ";
+                        fileResult1.innerHTML = " ";
+                        event.target.reset();
+                    }
+                    else if (request.status == 400) {
+
+                        document.getElementById("demo").innerHTML = request.responseText;
+                        document.getElementById("demo").style.color = "red";
+
+                        fileResult.innerHTML = " ";
+                        fileResult1.innerHTML = " ";
+                        event.target.reset();
+                    } else {
+                        document.getElementById("demo").innerHTML = request.responseText;
+                        document.getElementById("demo").style.color = "red";
+                        fileResult.innerHTML = " ";
+                        fileResult1.innerHTML = " ";
+                        event.target.reset();
+                    }
+                };
+                request.send(formData);
+                event.preventDefault();
+            },
+
+            false
+        );
+</script>
 </body>
 </html>
