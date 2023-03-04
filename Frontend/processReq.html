@@ -98,7 +98,7 @@
                         <div class="col-sm-6">
                             <div class="form-outline">
                                 <input type="text" class="form-control" id="idRequest" name="idRequest" placeholder="Enter the Request number"
-                                    required>
+                                    required readonly>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -208,6 +208,9 @@
     <script src="https://blots-site.github.io/main/js/main.js"></script>
     <script>
         const ApBtn = document.getElementById("appbutton")
+        const urlParams = new URLSearchParams(queryString);
+        const idR = urlParams.get('idR')
+        document.getElementById('idRequest').setAttribute('value', idR);
         ApBtn.addEventListener(
             "click",
             (event)=>{
@@ -247,9 +250,11 @@
                 request.setRequestHeader("content-type","application/json");
                 request.onreadystatechange = () => {
                      if (request.readyState == 4 && request.status === 200) {
-                        document.getElementById("output").innerHTML ="The request has been Rejected!";
-                     } else if (request.readyState == 4 && request.status === 500) {
-                        document.getElementById("output").innerHTML ="There is a problem processing the request. Please try again later!";
+                        document.getElementById("output").innerHTML = request.responseText;
+                        document.getElementById("container").style.color = "green";
+                     } else if (request.readyState == 4) {
+                        document.getElementById("output").innerHTML = request.responseText;
+                        document.getElementById("container").style.color = "red";
                      }
                 };
                 request.send(JSON.stringify({idRequest:idRequest,status:status,idExecutor:idExecutor,idTestator:idTestator,comments:comments}));

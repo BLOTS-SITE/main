@@ -172,13 +172,13 @@
                     console.log(request.response);
                      if (request.status === 200) {
                         document.getElementById("output").style.color="green";
-                        document.getElementById("output").innerHTML ="User Registration started! Check your email and confirm your Email Address";
+                        document.getElementById("output").innerHTML = request.responseText ;
                   } else if (request.readyState == 4 && request.status === 400){
                     document.getElementById("output").style.color="red";
-                    document.getElementById("output").innerHTML ="Something Went Wrong! Invalid Input Data!";
+                    document.getElementById("output").innerHTML = request.responseText;
                   } else if(request.readyState == 4 && request.status === 500){
                     document.getElementById("output").style.color="red";
-                    document.getElementById("output").innerHTML ="Server Internal Error! Not able to sign you up. Please come back later!";
+                    document.getElementById("output").innerHTML = request.responseText;
                   }
                };
 

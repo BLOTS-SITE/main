@@ -296,6 +296,8 @@
                     console.log(imageEx)
                     document.getElementById("image1").hidden=false;
                     document.getElementById("image2").hidden=false;
+                    const urlR = "https://blots-site.github.io/main/Frontend/processReq.html?idR="+ document.getElementById("reqidnum").value
+                    document.getElementById('preq').setAttribute('href', urlR);
                     document.getElementById("preq").hidden=false;
                     document.getElementById("image1").src = imaged;
                     document.getElementById("image2").src = imageEx;
