@@ -58,7 +58,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
 
-                    <a href= "https://blots-site.github.io/main/Frontend/processReq.html" class="btn btn-primary w-5 py-2 border-0 text-center">View All Requests</a>
+                    <a href= "https://blots-site.github.io/main/Frontend/ReqHandler.html" class="btn btn-primary w-5 py-2 border-0 text-center">View All Requests</a>
 
                 </div>
 
@@ -115,7 +115,7 @@
                             <input class="btn btn-primary w-100 py-3" id="appbutton" value="APPROVED" />
                         </div>
                         <div class="col-6 text-center">
-                            <input class="btn btn-primary w-100 py-3" id="decbutton" value="REJECTED" />
+                            <input class="btn btn-primary w-100 py-3" id="decbutton" value="DECLINED" />
                         </div>
                         <div class="col-12 text-center">
                             <div id="output" class="text-danger mt-3"></div>
@@ -223,7 +223,31 @@
             },
             false
         );
-
+        const DcBtn = document.getElementById("decbutton")
+        DcBtn.addEventListener(
+            "click",
+            (event)=>{
+                const idRequest = document.getElementById("idRequest").value;
+                const idExecutor = document.getElementById("idExecutor").value;
+                const idTestator = document.getElementById("idTestator").value;
+                const comments = document.getElementById("comments").value;
+                const status = document.getElementById("decbutton").value;
+                const request = new XMLHttpRequest();
+                request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com//updateRequest", true);
+                request.withCredentials=true;
+                request.setRequestHeader("content-type","application/json");
+                request.onreadystatechange = () => {
+                     if (request.readyState == 4 && request.status === 200) {
+                        document.getElementById("output").innerHTML ="The request has been Rejected!";
+                     } else if (request.readyState == 4 && request.status === 500) {
+                        document.getElementById("output").innerHTML ="There is a problem processing the request. Please try again later!";
+                     }
+                };
+                request.send(JSON.stringify({idRequest:idRequest,status:status,idExecutor:idExecutor,idTestator:idTestator,comments:comments}));
+                event.preventDefault();
+            },
+            false
+        );
 
 
 
