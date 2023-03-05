@@ -54,13 +54,13 @@
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="form-outline">
-                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your First Name"
+                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your First Name" pattern="[^;]"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-outline">
-                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your Last Name"
+                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your Last Name" pattern="[^;]"
                                             required>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                     <div class="input-group">
                                         <input type="text" id="countryPhone" name="countryPhone" placeholder="Country Code" maxlength="5" class="form-control"
                                             required />
-                                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" maxlength="15" class="form-control"
+                                        <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" maxlength="15" class="form-control"
                                             required />
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                
                                 <div class="col-sm-6">
                                  <div class="form-outline">
-                                     <input type="text" class="form-control" id="IdNumber" name="IdNumber" maxlength="10" placeholder="Your ID Number"
+                                     <input type="number" class="form-control" id="IdNumber" name="IdNumber" maxlength="10" placeholder="Your ID Number"
                                          required>
                                  </div>
                              </div>
@@ -122,7 +122,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-outline">
                                         <textarea type="text" id="postalAddress"  name="postalAddress" placeholder="Enter your full Postal Address"
-                                            class="form-control" required></textarea>
+                                            class="form-control" pattern="[^;]" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12 text-center">
