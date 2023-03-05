@@ -88,7 +88,7 @@
 
 
     <!-- View Wills Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5 justify-content-center">
         <div class="container">
           
                 <div class="col-lg-7">
@@ -135,18 +135,20 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <h3 class="display-5 mb-4">Show my Existing Will</h3>
                     <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">In this section you can view you will which you have uploaded before</p>
-                    <form>
+                    
                         <div class="row g-3">
                             <div class="col-12">
                                 <a class="btn btn-primary py-3 px-5" href="" id="EthereumId" target="_blank">Ethereum Transaction</a>
+                                <form>
                                 <input class="btn btn-primary py-3 px-5" id="getwill" type="submit" value="Get Will"/>
+                                </form>
                                 <a class="btn btn-primary py-3 px-5" href="" id="disppdf" hidden>Download Will</a>
                             </div>
-                            <div class="col-12 text-center">
-                                <div id="resp" class="mt-3"></div>
-                            </div>
                         </div>
-                    </form>
+                        <div class="col-12 text-center">
+                            <div id="resp" class="mt-3"></div>
+                        </div>
+                    
                 </div>
             </div>
         </div>
@@ -219,6 +221,8 @@
     <script src="https://blots-site.github.io/main/js/main.js"></script>
     <script>
         console.log(document.cookie);
+        document.getElementById('EthereumId').hidden = true
+        hashcode = ""
         let decodedCookie = decodeURIComponent(document.cookie);
         const cookiesplit = decodedCookie.split(";");
         numberCookies = cookiesplit.length
@@ -243,12 +247,13 @@
 
             if (cookiesplit[i].includes("Hash=") == true){
                 var hashData = cookiesplit[i].split("=");
-                var hashcode = hashData[1];
+                hashcode = hashData[1];
                 console.log(hashcode.length)
                 if (hashcode.length>0) {
                     let urlE = "https://goerli.etherscan.io/tx/" + hashcode
-                    document.getElementById('EthereumId').hidden = false
                     document.getElementById('EthereumId').setAttribute('href', urlE);
+                    document.getElementById('EthereumId').hidden = false
+                    
                 } else{
                     document.getElementById('EthereumId').hidden = true
                 }
@@ -262,20 +267,17 @@
             request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestament", true);
             request.withCredentials=true;
             request.setRequestHeader("content-type","application/json");
-            request.responseType = "blob";
+            //request.responseType = "blob";
             request.onreadystatechange = () => {
-                var msg =document.getElementById("resp");
                 if (request.readyState == 4 && request.status === 200) {
                     url = window.URL.createObjectURL(request.response);
                     var a = document.getElementById("disppdf");
                     a.href =url;
                     a.hidden=false;
-                  } else if (request.response === 400){
-                    document.getElementById("resp").style.color="red";
+                  } else {
                     document.getElementById("resp").innerHTML = request.responseText;
-                  } else if(request.response === 500){
                     document.getElementById("resp").style.color="red";
-                    document.getElementById("resp").innerHTML = request.responseText;
+                    
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
