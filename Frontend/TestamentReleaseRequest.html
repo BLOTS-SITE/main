@@ -44,14 +44,12 @@
         <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
             <div class="col-lg-6 px-5 text-start">
                 <small><i class="fa fa-map-marker-alt text-primary me-2"></i>Veterstraße 72, Chemnitz, Germany</small>
-
             </div>
             <div class="col-lg-6 px-5 text-end">
                 <small><i class="fa fa-envelope text-primary me-2"></i>blots-info@googlegroups.com</small>
                 <small class="ms-4"><i class="fa fa-phone-alt text-primary me-2"></i>+49 15172191384</small>
             </div>
         </div>
-
         <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
             <a href="https://blots-site.github.io/main/index.html" class="navbar-brand ms-4 ms-lg-0">
                 <h1 class="display-5 text-primary m-0"><img class="rounded-circle mb-3" width="90px"
@@ -81,7 +79,6 @@
 
     <!-- Page Header End -->
 
-
   <!-- Release Request Form start -->
     <div class="container-fluid callback my-5 pt-5" id="contact-wrapper">
         <form method="post" id="requestRelease" enctype="multipart/form-data">
@@ -93,7 +90,6 @@
                                 style="max-width: 600px;">
                                 <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Testament
                                     Release Request</p>
-
                             </div><br><br>
 
                             <p class="mb-4">Dear Executor,<br>Please attach the necessary documents, if you are the
@@ -114,7 +110,6 @@
                                 <div class="row g-3">
                                     <div class="col-md-12">
                                         <div class="form-floating"> </div>
-
                                         <!--size much be 300kb  all type of the imge-->
                                         <label for="CertificatedDeath" placeholder="CertificatedDeath">Uploaded Testator
                                             Death Certificate<span>*</span></label><br>
@@ -123,7 +118,6 @@
                                             name="CertificatedDeath" required></input>
                                         <code>Images types accepted: .jpg, .jpeg, .png,  max-size="300kb" </code>
                                         <p id="file-result1"></p>
-
                                     </div>
                                 </div>
                                 <br>
@@ -242,7 +236,6 @@
                     fileSubmit.disabled = false;
                 }
             }
-
         });
 
          // Test XMLHttpReques
@@ -263,7 +256,6 @@
 
                         document.getElementById("demo").innerHTML = request.responseText;
                         document.getElementById("demo").style.color = "green";
-
                         fileResult.innerHTML = " ";
                         fileResult1.innerHTML = " ";
                         event.target.reset();
