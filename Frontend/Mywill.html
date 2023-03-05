@@ -266,8 +266,10 @@
                     a.hidden=false;
                   } else if (request.response === 400){
                     msg.innerHTML = request.responseText;
+                    document.getElementById("output").style.color="red";
                   } else if(request.response === 500){
                     msg.innerHTML = request.responseText;
+                    document.getElementById("output").style.color="red";
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
