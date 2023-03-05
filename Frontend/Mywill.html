@@ -141,7 +141,7 @@
                                 <a class="btn btn-primary py-3 px-5" href="" id="EthereumId" target="_blank">Ethereum Transaction</a>
                                 <input class="btn btn-primary py-3 px-5" id="getwill" type="submit" value="Get Will"/>
                                 <a class="btn btn-primary py-3 px-5" href="" id="disppdf" hidden>Download Will</a>
-                                <p class="alert alert-info mt-5" id="resp" hidden></p>
+                                <p class="alert alert-info mt-5" id="resp" ></p>
                             </div>
                         </div>
                     </form>
@@ -224,18 +224,24 @@
         for(i=0;i<numberCookies;i++){
             if (cookiesplit[i].includes("Name=") == true){
                 var userData = cookiesplit[i].split("=");
-                let firstName = userData[1];
-                let lastName = userData[3];
-                let regemail = userData[4];
-                let phnnumber = userData[5];
-                let dtb = userData[6];
-                let postadd = userData[7];
-                let idnumb = userData[2];
+                var firstName = userData[1];
+                var lastName = userData[3];
+                var regemail = userData[4];
+                var phnnumber = userData[5];
+                var dtb = userData[6];
+                var postadd = userData[7];
+                var idnumb = userData[2];
+                document.getElementById("FullName").innerHTML = firstName+" "+lastName;
+                document.getElementById("dob").innerHTML = dtb;
+                document.getElementById("idnum").innerHTML = idnumb;
+                document.getElementById("remail").innerHTML = regemail;
+                document.getElementById("phnnum").innerHTML = phnnumber;
+                document.getElementById("paddr").innerHTML = postadd;
             }
 
             if (cookiesplit[i].includes("Hash=") == true){
                 var hashData = cookiesplit[i].split("=");
-                let hashcode = hashData[1];
+                var hashcode = hashData[1];
             }
 
         }
@@ -244,14 +250,6 @@
         let urlE = "https://goerli.etherscan.io/tx/" + hashcode
         document.getElementById('EthereumId').setAttribute('href', urlE);
         
-
-        document.getElementById("FullName").innerHTML = firstName+" "+lastName;
-        document.getElementById("dob").innerHTML = dtb;
-        document.getElementById("idnum").innerHTML = idnumb;
-        document.getElementById("remail").innerHTML = regemail;
-        document.getElementById("phnnum").innerHTML = phnnumber;
-        document.getElementById("paddr").innerHTML = postadd;
-
         const viewwill = document.getElementById("getwill");
         viewwill.addEventListener("click", (event)=>{
             const request = new XMLHttpRequest();
