@@ -218,15 +218,29 @@
     <script>
         console.log(document.cookie);
         let decodedCookie = decodeURIComponent(document.cookie);
-        const cookiesplit = decodedCookie.split("=");
-        let hashcode = cookiesplit[9];
-        let firstName = cookiesplit[1];
-        let lastName = cookiesplit[3];
-        let regemail = cookiesplit[4];
-        let phnnumber = cookiesplit[5];
-        let dtb = cookiesplit[6];
-        let postadd = cookiesplit[7];
-        let idnumb = cookiesplit[2];
+        const cookiesplit = decodedCookie.split(";");
+        numberCookies = cookiesplit.length
+        console.log("cookiesplit " + cookiesplit)
+        for(i=0;i<numberCookies;i++){
+            if (cookiesplit[i].includes("Name=") == true){
+                var userData = cookiesplit[i].split("=");
+                let firstName = userData[1];
+                let lastName = userData[3];
+                let regemail = userData[4];
+                let phnnumber = userData[5];
+                let dtb = userData[6];
+                let postadd = userData[7];
+                let idnumb = userData[2];
+            }
+
+            if (cookiesplit[i].includes("Hash=") == true){
+                var hashData = cookiesplit[i].split("=");
+                let hashcode = hashData[1];
+            }
+
+        }
+        
+        console.log("hashData " + hashData)
         let urlE = "https://goerli.etherscan.io/tx/" + hashcode
         document.getElementById('EthereumId').setAttribute('href', urlE);
         

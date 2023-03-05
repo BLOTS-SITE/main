@@ -242,6 +242,10 @@
                     
                   } else{
                     console.log("Something went wrong with accessing Browser Cookie!")
+                    window.location.assign('https://blots-site.github.io/main/Frontend/Mywill.html');
+                    document.cookie = "Hash=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    var hashCookie = "Hash=";
+                    document.cookie = hashCookie;
                   }
             };
             console.log(loggedinID)

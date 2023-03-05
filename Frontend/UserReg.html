@@ -115,7 +115,7 @@
                              <div class="col-sm-6">
                               <div class="input-group">
                                  <label class="form-control" for="file">Upload ID</label>
-                                 <input type="file" id="file" name="file" class="form-control" placeholder="Upload ID Proof" required hidden/>
+                                 <input type="file" id="file" name="file" class="form-control" placeholder="Upload ID Proof" hidden/>
                                  <label class="form-control" id="idproof">No File</label>
                               </div>
                               </div>
@@ -164,27 +164,29 @@
             form.addEventListener(
             "submit",
             (event) => {
+            
                
-               const formData = new FormData(form);
-               const request = new XMLHttpRequest();
-               request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/sign-up", true);
-               request.onreadystatechange = () => {
+                const formData = new FormData(form);
+                const request = new XMLHttpRequest();
+                request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/sign-up", true);
+                request.onreadystatechange = () => {
                     console.log(request.response);
-                     if (request.status === 200) {
+                        if (request.status === 200) {
                         document.getElementById("output").style.color="green";
                         document.getElementById("output").innerHTML = request.responseText ;
-                  } else if (request.readyState == 4 && request.status === 400){
+                    } else if (request.readyState == 4 && request.status === 400){
                     document.getElementById("output").style.color="red";
                     document.getElementById("output").innerHTML = request.responseText;
-                  } else if(request.readyState == 4 && request.status === 500){
+                    } else if(request.readyState == 4 && request.status === 500){
                     document.getElementById("output").style.color="red";
                     document.getElementById("output").innerHTML = request.responseText;
-                  }
-               };
+                    }
+                };
 
-               request.send(formData);
-               
-               event.preventDefault();
+                request.send(formData);
+                
+                event.preventDefault();
+              
             },
             false
             );
