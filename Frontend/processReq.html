@@ -126,7 +126,7 @@
                             <div class="col-6 text-center">
                                 <input class="btn btn-primary w-100 py-3" id="decbutton" value="DECLINED" />
                             </div>
-                            <div class="col-12 text-center">
+                            <div id="container" class="col-12 text-center">
                                 <p id="output"></p>
                             </div>
                         </div>
@@ -353,12 +353,13 @@
                 request.setRequestHeader("content-type","application/json");
                 request.onreadystatechange = () => {
                      if (request.status === 200) {
+                        document.getElementById("output").style.color = "green";
                         document.getElementById("output").innerHTML = request.responseText;
-                        document.getElementById("output ").style.color = "green";
                         event.target.reset();
                      } else {
-                        document.getElementById("output").innerHTML = request.responseText;
                         document.getElementById("output").style.color = "red";
+                        document.getElementById("output").innerHTML = request.responseText;
+                        
                      }
                 };
                 request.send(JSON.stringify({idRequest:idRequest,status:status,idExecutor:idExecutor,idTestator:idTestator,comments:comments}));
@@ -381,11 +382,13 @@
                 request.setRequestHeader("content-type","application/json");
                 request.onreadystatechange = () => {
                      if (request.readyState == 4 && request.status === 200) {
-                        document.getElementById("output").innerHTML = request.responseText;
                         document.getElementById("output").style.color = "green";
-                     } else if (request.readyState == 4) {
                         document.getElementById("output").innerHTML = request.responseText;
+                        
+                     } else if (request.readyState == 4) {
                         document.getElementById("output").style.color = "red";
+                        document.getElementById("output").innerHTML = request.responseText;
+                        
                      }
                 };
                 request.send(JSON.stringify({idRequest:idRequest,status:status,idExecutor:idExecutor,idTestator:idTestator,comments:comments}));
