@@ -267,7 +267,7 @@
             request.open("POST", "https://pristine-dahlia-377509.ey.r.appspot.com/getTestament", true);
             request.withCredentials=true;
             request.setRequestHeader("content-type","application/json");
-            //request.responseType = "blob";
+            request.responseType = "blob";
             request.onreadystatechange = () => {
                 if (request.readyState == 4 && request.status === 200) {
                     url = window.URL.createObjectURL(request.response);
@@ -275,7 +275,7 @@
                     a.href =url;
                     a.hidden=false;
                   } else {
-                    document.getElementById("resp").innerHTML = request.responseText;
+                    document.getElementById("resp").innerHTML = "There are not testament to display";
                     document.getElementById("resp").style.color="red";
                     
                   }
