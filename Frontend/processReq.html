@@ -127,7 +127,7 @@
                                 <input class="btn btn-primary w-100 py-3" id="decbutton" value="DECLINED" />
                             </div>
                             <div class="col-12 text-center">
-                                <div id="output" class="text-danger mt-3"></div>
+                                <p id="output"></p>
                             </div>
                         </div>
                     
@@ -326,7 +326,7 @@
             
                 else if (request.readyState == 4) {
                     document.getElementById("output").innerHTML = request.responseText;
-                    document.getElementById("container").style.color = "red";
+                    document.getElementById("output").style.color = "red";
                  }
             };
             request.send(JSON.stringify({ idRequest: idR }));
@@ -352,12 +352,13 @@
                 request.withCredentials=true;
                 request.setRequestHeader("content-type","application/json");
                 request.onreadystatechange = () => {
-                     if (request.readyState == 4 && request.status === 200) {
+                     if (request.status === 200) {
                         document.getElementById("output").innerHTML = request.responseText;
-                        document.getElementById("container").style.color = "green";
-                     } else if (request.readyState == 4) {
+                        document.getElementById("output ").style.color = "green";
+                        event.target.reset();
+                     } else {
                         document.getElementById("output").innerHTML = request.responseText;
-                        document.getElementById("container").style.color = "red";
+                        document.getElementById("output").style.color = "red";
                      }
                 };
                 request.send(JSON.stringify({idRequest:idRequest,status:status,idExecutor:idExecutor,idTestator:idTestator,comments:comments}));
