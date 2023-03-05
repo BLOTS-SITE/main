@@ -242,14 +242,13 @@
             if (cookiesplit[i].includes("Hash=") == true){
                 var hashData = cookiesplit[i].split("=");
                 var hashcode = hashData[1];
+                if (hashcode.length>0) {
+                    let urlE = "https://goerli.etherscan.io/tx/" + hashcode
+                    document.getElementById('EthereumId').setAttribute('href', urlE);
+                }
                 console.log("hashData " + hashData)
-                let urlE = "https://goerli.etherscan.io/tx/" + hashcode
-                document.getElementById('EthereumId').setAttribute('href', urlE);
             }
-
         }
-        
-        
         
         const viewwill = document.getElementById("getwill");
         viewwill.addEventListener("click", (event)=>{
