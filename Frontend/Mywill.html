@@ -88,7 +88,7 @@
 
 
     <!-- View Wills Start -->
-    <div class="container-xxl py-5 justify-content-center">
+    <div class="container-xxl py-5 ">
         <div class="container">
           
                 <div class="col-lg-7">
@@ -226,7 +226,7 @@
         let decodedCookie = decodeURIComponent(document.cookie);
         const cookiesplit = decodedCookie.split(";");
         numberCookies = cookiesplit.length
-        console.log("cookiesplit " + cookiesplit)
+        
         for(i=0;i<numberCookies;i++){
             if (cookiesplit[i].includes("Name=") == true){
                 var userData = cookiesplit[i].split("=");
@@ -248,7 +248,7 @@
             if (cookiesplit[i].includes("Hash=") == true){
                 var hashData = cookiesplit[i].split("=");
                 hashcode = hashData[1];
-                console.log(hashcode.length)
+                
                 if (hashcode.length>0) {
                     let urlE = "https://goerli.etherscan.io/tx/" + hashcode
                     document.getElementById('EthereumId').setAttribute('href', urlE);
@@ -257,7 +257,7 @@
                 } else{
                     document.getElementById('EthereumId').hidden = true
                 }
-                console.log("hashData " + hashData)
+                
             }
         }
         
