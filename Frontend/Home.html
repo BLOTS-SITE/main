@@ -235,7 +235,7 @@
                     window.location.assign('https://blots-site.github.io/main/Frontend/Mywill.html');
                     const hash = JSON.parse(request.response);
                     console.log(hash[0].Hash);
-                    document.cookie = "Hash=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "Hash=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                     var hashCookie = "Hash=" + hash[0].Hash;
                     document.cookie = hashCookie;
                     console.log("Your Cookie : " + document.cookie);

@@ -110,6 +110,7 @@
                         
                         const data = JSON.parse(request.response);
                         console.log(data);
+                        document.cookie = "Hash=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                         var nameCookie = "Name=" + data[0].FirstName+"="+data[0].Id+"="+data[0].LastName+"="+data[0].email+"="+data[0].PhoneNumber+"="+data[0].DateBirth+"="+data[0].PostalAddress+"=";
                         document.cookie = nameCookie;
                         console.log("Your Cookie : " + document.cookie);
