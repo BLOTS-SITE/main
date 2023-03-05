@@ -242,6 +242,7 @@
             if (cookiesplit[i].includes("Hash=") == true){
                 var hashData = cookiesplit[i].split("=");
                 var hashcode = hashData[1];
+                console.log(hashcode.length)
                 if (hashcode.length>0) {
                     let urlE = "https://goerli.etherscan.io/tx/" + hashcode
                     document.getElementById('EthereumId').setAttribute('href', urlE);
@@ -265,11 +266,11 @@
                     a.href =url;
                     a.hidden=false;
                   } else if (request.response === 400){
-                    msg.innerHTML = request.responseText;
-                    document.getElementById("output").style.color="red";
+                    document.getElementById("resp").style.color="red";
+                    document.getElementById("resp").innerHTML = request.responseText;
                   } else if(request.response === 500){
-                    msg.innerHTML = request.responseText;
-                    document.getElementById("output").style.color="red";
+                    document.getElementById("resp").style.color="red";
+                    document.getElementById("resp").innerHTML = request.responseText;
                   }
             };
             request.send(JSON.stringify({hashNumber:hashcode}));
