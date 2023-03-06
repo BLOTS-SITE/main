@@ -1,3 +1,14 @@
+From BloTS Team,
+
+Here we have all the codes for our Website & Web Application. The FrontEnd folder & main folder has all the web pages. The Backend folder contains the codes for Backend and API.
+
+Github Desktop, Visual Studio Code & WinRAR are the three software pre-requisistes to clone the repository in your workstation & work/see the file contents.
+
+
+
+
+Website Design Template Credit:
+
   =>  Template Name    : Finanza - Financial Services Website Template
 
   =>  Template Link    : https://htmlcodex.com/financial-services-website-template
